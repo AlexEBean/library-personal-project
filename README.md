@@ -1,70 +1,136 @@
-# Getting Started with Create React App
+# Personal Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## MVP
+- Users can create an account
+- Users can login to website
+- Users and admin can view the catalog of books
+- Users can both add and remove holds on books
+- Users can view their holds
+- Users can edit their profile_pic
+- Admin can add and remove books
+- Admin can view list of all holds, along with the book title, email and username of the user that placed the hold  (JOIN statement)
+- Users can receive emails, regarding holds
 
-## Available Scripts
+## Icebox
+- Users can view their hold history
+- Book will state whether it is available or not
+- Users will be able to check out books
+- Users can edit their password if they are able to enter in their old one
+- Admin can remove users
+- Users can add comments on books
+- Users can edit comments
+- Users can delete comments
 
-In the project directory, you can run:
+### Database
 
-### `npm start`
+- Schemas:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+library_users
+```SQL
+CREATE TABLE library_users (
+    user_id SERIAL PRIMARY KEY,
+    first_name VARCHAR (20),
+    last_name VARCHAR (30)
+    email VARCHAR(60) UNIQUE,
+    username VARCHAR(40) UNIQUE,
+    password TEXT,
+    profile_pic VARCHAR(3000)
+    admin: BOOLEAN
+);
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+books
+```SQL
+CREATE TABLE books (
+    book_id SERIAL PRIMARY KEY,
+    img VARCHAR(3000),
+    title VARCHAR(200),
+    ISBN VARCHAR(3000)
+    year INT,
+    author VARCHAR(200)
+);
+```
 
-### `npm test`
+holds
+```SQL
+CREATE TABLE holds(
+    hold_id SERIAL PRIMARY KEY,
+    user_id INT REFERENCES users(user_id),
+    book_id INT REFERENCES books(book_id),
+);
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Server
+- Dependencies:
+    - express
+    - massive
+    - dotenv
+    - express-session
+    - bcrypt
+    - aws-sdk
+    - uuid
+    - nodemailer
 
-### `npm run build`
+- File Structure:
+    - server/
+        - index.js
+        - controllers/
+            - authController.js
+            - bookController.js
+            - holdController.js
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Endpoints:
+    - auth endpoints:
+        - register => '/auth/register'
+        - login => '/auth/login'
+        - logout => '/auth/logout'
+        - getUser => '/auth/get_user'
+    - book endpoints: 
+        - read books => '/api/books'
+        - delete => '/api/book/:id'
+        - create => '/api/book'
+    - hold endpoints:
+        - read all holds => '/api/holds
+        - read user holds => '/api/holds/:id'
+        - delete => '/api/hold/:id'
+        - create => '/api/hold'
+    - account endpoint:
+        - edit profile_pic => '/api/user'
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Front-end
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Dependencies: 
+    - axios
+    - react-router-dom
+    - redux
+    - react-redux
+    - redux-promise-middleware
 
-### `npm run eject`
+- File Structure:
+    - src/
+        - App.js
+        - App.css
+        - reset.css
+        - routes.js
+            - '/' => Home.js
+            - '/login' => Auth.js
+            - '/catalog' => Catalog.js
+            - '/account' => Account.js
+            - '/admin' => Admin.js
+        - redux/
+            - store.js
+            - authReducer.js
+            - holdReducer.js
+        - components/
+            - Nav.js
+            - Home.js
+            - Auth.js
+            - Catalog.js
+            - Book.js
+            - Account.js
+            - UserHolds.js
+            - Admin.js
+            - AllHolds.js
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<a href = "https://www.figma.com/file/R2wzAQNqEFaK3sSLXHNHrT/Untitled?node-id=0%3A1"> My Figma Wireframe </a>
