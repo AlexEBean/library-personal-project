@@ -3,7 +3,7 @@ const express = require('express')
 const massive = require('massive')
 const session = require('express-session')
 const authCtrl = require("./controllers/authController")
-const { checkUser } = require("./middleware")
+const { checkUser, checkAdmin } = require("./middleware")
 
 const bookCtrl = require("./controllers/bookController")
 const holdCtrl = require("./controllers/holdController")
@@ -33,10 +33,22 @@ massive({
     console.log("Connected to DB")
 })
 
-app.get("/api/user", checkUser, authCtrl.getUser)
-app.put("/api/user", checkUser, authCtrl.updateUser)
+
 app.post("/auth/register", authCtrl.register)
 app.post("/auth/login", authCtrl.login)
 app.post("/auth/logout", authCtrl.logout)
+app.get("/api/user", checkUser, authCtrl.getUser)
+app.put("/api/user", checkUser, authCtrl.updateProfilePic)
+app.get("/api/users", checkAdmin, authCtrl.getUsers)
+app.put("/api/user/:userId", checkAdmin, authCtrl.updateUser)
+
+app.get("/api/books", bookCtrl.getBooks)
+app.post("/api/book", checkAdmin, bookCtrl.addBook)
+app.delete("/api/book/:bookId", checkAdmin, bookCtrl.deleteBook)
+
+app.get("/api/holds", checkAdmin, holdCtrl.getHolds)
+app.get("/api/hold/:userId", checkUser, holdCtrl.getHold)
+app.post("/api/hold/:bookId", checkUser, holdCtrl.addHold)
+app.delete("/api/hold/:holdId", checkUser, holdCtrl.deleteHold)
 
 app.listen(SERVER_PORT, () => console.log(`Server is listening on port ${SERVER_PORT}`))
