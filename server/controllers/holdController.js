@@ -10,7 +10,7 @@ module.exports = {
         const {userId} = req.params
 
         try {
-            const hold = await db.hold.get_user_holds(userId)
+            const hold = await db.hold.get_user_holds(+userId)
             res.status(200).send(hold)
         } catch(err) {
             console.log("Error in displaying user's holds", err)
@@ -24,7 +24,7 @@ module.exports = {
         const {bookId} = req.params
   
         try {
-            await db.hold.add_hold([user_id, bookId])
+            await db.hold.add_hold([+user_id, +bookId])
             res.sendStatus(200)
         } catch(err) {
             console.log("Error in adding hold", err)

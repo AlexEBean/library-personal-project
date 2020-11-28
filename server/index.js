@@ -41,6 +41,7 @@ app.get("/api/user", checkUser, authCtrl.getUser)
 app.put("/api/user", checkUser, authCtrl.updateProfilePic)
 app.get("/api/users", checkAdmin, authCtrl.getUsers)
 app.put("/api/user/:userId", checkAdmin, authCtrl.updateUser)
+app.delete("/api/user/:userId", checkAdmin, authCtrl.deleteUser)
 
 app.get("/api/books", bookCtrl.getBooks)
 app.post("/api/book", checkAdmin, bookCtrl.addBook)

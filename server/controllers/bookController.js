@@ -10,7 +10,7 @@ module.exports = {
         const {cover, title, year, author} = req.body
   
         try {
-            const [newBook] = await db.book.add_book([cover, title, year, author])
+            await db.book.add_book([cover, title, year, author])
             res.sendStatus(200)
         } catch(err) {
             console.log("Error in adding book", err)

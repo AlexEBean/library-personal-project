@@ -8,10 +8,13 @@ module.exports = {
   },
 
     checkAdmin: async (req, res, next) => {
-      if (req.session.user.admin) {
+      const {user} = req.session
+      if (user && user.admin) {
       next();
-    } else {
+    } else if (user && !user.admin){
       res.status(401).send("Not an Admin");
+    } else {
+      res.status(403).send("Not Logged in")
     }
   },
 }

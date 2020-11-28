@@ -51,7 +51,7 @@ module.exports = {
         const db = req.app.get("db")
         const {user_id} = req.session.user
         const {profile_pic} = req.body
-        const updatedUser = await db.auth.update_profile_pic(user_id, profile_pic)
+        const updatedUser = await db.auth.update_profile_pic(+user_id, profile_pic)
         req.session.user = updatedUser
         
         res.status(200).send(req.session.user)
@@ -66,9 +66,21 @@ module.exports = {
     updateUser: async (req, res) => {
         const db = req.app.get("db")
         const {userId} = req.params
-        const [updatedUser] = await db.auth.update_user_admin_status(userId)
+        const [updatedUser] = await db.auth.update_user_admin_status(+userId)
         
         req.session.user = updatedUser
         res.status(200).send(req.session.user)
     },
+    deleteUser: async (req, res) => {
+        const db = req.app.get('db')
+        const {userId} = req.params
+
+        try {
+            await db.auth.remove_user([+userId])
+            res.sendStatus(200)
+        } catch(err) {
+            console.log("Error in removing User", err)
+            res.sendStatus(500)
+        }
+      }
 }
