@@ -1,14 +1,25 @@
 import React from 'react'
 import axios from 'axios'
-
+import {useHistory} from "react-router-dom"
 
 const Book = (props) =>  {
     const {title, cover, author, year, book_id} = props.book
+    const {user_id, admin} = props.user
+    const history = useHistory()
 
-    const deleteBook = async (book_id) => {
+    const deleteBook = async (bookId) => {
         try {
-            await axios.delete (`/api/book/${book_id}`)
+            await axios.delete (`/api/book/${bookId}`)
             props.getBooks()
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    const addHold = async (bookId) => {
+        try {
+            await axios.post (`/api/hold/${bookId}`)
+            history.push("/account")
         } catch (err) {
             console.log(err)
         }
@@ -20,7 +31,19 @@ const Book = (props) =>  {
             <h1>{title}</h1>
             <h2>{author}</h2>
             <h3>{year}</h3>
-            {props.user.admin
+            {user_id
+            ? 
+                <button
+                    onClick = {() =>
+                        addHold(book_id)
+                    }
+                >
+                    Place Hold
+                </button>
+            :
+                null
+            }
+            {admin
             ? 
                 <button
                     onClick = {() =>

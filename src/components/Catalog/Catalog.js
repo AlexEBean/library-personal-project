@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react"
-import {connect} from "react-redux"
+import {connect, useSelector} from "react-redux"
 import axios from "axios"
 import Book from "../Book/Book"
 
 
-const Catalog = (props) => {
+const Catalog = () => {
     const [books, setBooks] = useState([])
     const [add, setAdd] = useState(false)
     const [title, setTitle] = useState("")
     const [cover, setCover] = useState("")
     const [author, setAuthor] = useState("")
     const [year, setYear] = useState("")
+    const {user} = useSelector((state) => state.reducer)
 
     useEffect(() => {
         getBooks()
@@ -44,7 +45,7 @@ const Catalog = (props) => {
             <Book 
                 key = {`${book.book_id}-${index}`} 
                 book = {book}
-                user = {props.user}
+                user = {user}
                 getBooks = {getBooks}
             />
         )
@@ -87,7 +88,7 @@ const Catalog = (props) => {
                     </button>
                 </form>
             :
-                props.user.admin
+                user.admin
                     ? <button
                         onClick = {() => {
                             setAdd(!add)

@@ -1,14 +1,15 @@
 import React from 'react'
 import {Link, useHistory} from "react-router-dom"
-import {connect, useDispatch} from "react-redux"
+import {connect, useDispatch, useSelector} from "react-redux"
 import {logoutUser} from "../../redux/authReducer"
 import axios from "axios"
 
-const Nav = (props) => {
+const Nav = () => {
+    const {user} = useSelector((state) => state.reducer)
+    const {user_id, admin} = user
 
     const history = useHistory()
     const dispatch = useDispatch()
-    const {user_id, admin} = props.user
 
     const logout = async () => {
         try {
