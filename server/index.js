@@ -4,9 +4,12 @@ const massive = require('massive')
 const session = require('express-session')
 const authCtrl = require("./controllers/authController")
 const { checkUser, checkAdmin } = require("./middleware")
+const userCtrl = require("./controllers/userController")
 
 const bookCtrl = require("./controllers/bookController")
 const holdCtrl = require("./controllers/holdController")
+
+const awsCtrl = require("./controllers/awsController")
 const emailCtrl = require("./controllers/emailController")
 
 const app = express()
@@ -34,26 +37,30 @@ massive({
     console.log("Connected to DB")
 })
 
-
+//# Auth
 app.post("/auth/register", authCtrl.register)
 app.post("/auth/login", authCtrl.login)
 app.post("/auth/logout", authCtrl.logout)
 
-app.get("/api/user", checkUser, authCtrl.getUser)
-// app.put("/api/user", checkUser, authCtrl.updateProfilePic)
-app.get("/api/users", checkAdmin, authCtrl.getUsers)
-// app.put("/api/user/:userId", checkAdmin, authCtrl.updateUser)
-app.delete("/api/user/:userId", checkAdmin, authCtrl.deleteUser)
-
+// # Books
 app.get("/api/books", bookCtrl.getBooks)
 app.post("/api/book", checkAdmin, bookCtrl.addBook)
 app.delete("/api/book/:bookId", checkAdmin, bookCtrl.deleteBook)
 
+// # Holds
 app.get("/api/holds", checkAdmin, holdCtrl.getHolds)
 app.get("/api/hold/:userId", checkUser, holdCtrl.getHold)
 app.post("/api/hold/:bookId", checkUser, holdCtrl.addHold)
 app.delete("/api/hold/:holdId", checkUser, holdCtrl.deleteHold)
 
+// # Additional Technologies
+app.put("/api/user", checkUser, awsCtrl.updateProfilePic)
 app.post("/api/email", emailCtrl.email)
+
+//# Icebox Endpoints
+app.get("/api/user", checkUser, userCtrl.getUser)
+app.get("/api/users", checkAdmin, userCtrl.getUsers)
+app.put("/api/user/:userId", checkAdmin, userCtrl.updateUser)
+app.delete("/api/user/:userId", checkAdmin, userCtrl.deleteUser)
 
 app.listen(SERVER_PORT, () => console.log(`Server is listening on port ${SERVER_PORT}`))

@@ -25,6 +25,7 @@ module.exports = {
   
         try {
             await db.hold.add_hold([+user_id, +bookId])
+            console.log(process.env.USER)
             res.sendStatus(200)
         } catch(err) {
             console.log("Error in adding hold", err)

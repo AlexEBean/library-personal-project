@@ -12,11 +12,13 @@
 - Users can receive emails, regarding holds
 
 ## Icebox
+- Admin can view all users
+- Admin can remove users
+- Admin can edit a user's status to be an admin
 - Users can view their hold history
 - Book will state whether it is available or not
 - Users will be able to check out books
 - Users can edit their password if they are able to enter in their old one
-- Admin can remove users
 - Users can add comments on books
 - Users can edit comments
 - Users can delete comments

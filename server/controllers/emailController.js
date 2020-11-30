@@ -13,8 +13,6 @@ module.exports = {
             auth: {
                 user: USER,
                 pass: PASS
-                // It works if the FROM_EMAIL and PASSWORD variables are replaced with what's in the env file.  
-                // Making a comment here as a reminder to come back to this when other minimum things are completed.
             }
         })
 
