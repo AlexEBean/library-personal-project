@@ -7,6 +7,7 @@ const { checkUser, checkAdmin } = require("./middleware")
 
 const bookCtrl = require("./controllers/bookController")
 const holdCtrl = require("./controllers/holdController")
+const emailCtrl = require("./controllers/emailController")
 
 const app = express()
 
@@ -37,11 +38,12 @@ massive({
 app.post("/auth/register", authCtrl.register)
 app.post("/auth/login", authCtrl.login)
 app.post("/auth/logout", authCtrl.logout)
-// app.get("/api/user", checkUser, authCtrl.getUser)
+
+app.get("/api/user", checkUser, authCtrl.getUser)
 // app.put("/api/user", checkUser, authCtrl.updateProfilePic)
-// app.get("/api/users", checkAdmin, authCtrl.getUsers)
+app.get("/api/users", checkAdmin, authCtrl.getUsers)
 // app.put("/api/user/:userId", checkAdmin, authCtrl.updateUser)
-// app.delete("/api/user/:userId", checkAdmin, authCtrl.deleteUser)
+app.delete("/api/user/:userId", checkAdmin, authCtrl.deleteUser)
 
 app.get("/api/books", bookCtrl.getBooks)
 app.post("/api/book", checkAdmin, bookCtrl.addBook)
@@ -51,5 +53,7 @@ app.get("/api/holds", checkAdmin, holdCtrl.getHolds)
 app.get("/api/hold/:userId", checkUser, holdCtrl.getHold)
 app.post("/api/hold/:bookId", checkUser, holdCtrl.addHold)
 app.delete("/api/hold/:holdId", checkUser, holdCtrl.deleteHold)
+
+app.post("/api/email", emailCtrl.email)
 
 app.listen(SERVER_PORT, () => console.log(`Server is listening on port ${SERVER_PORT}`))

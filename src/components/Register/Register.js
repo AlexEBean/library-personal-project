@@ -12,8 +12,22 @@ const Register = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
+    const welcomeEmail = async () => {
+        const subject = "Welcome!"
+        const text = `Hello ${firstName} ${lastName}, welcome to the library!`
+
+        await axios.post("/api/email", {email, subject, text})
+        try {
+            console.log("Email sent")
+        } catch (err) {
+            console.log(err)
+            alert("Unable to email")
+        }
+    }
+
     const register = async (e) => {
         e.preventDefault()
+        welcomeEmail()
         try {
             const res = await axios.post("/auth/register", {firstName, lastName, email, password})
             dispatch(loginUser(res.data))

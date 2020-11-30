@@ -50,9 +50,9 @@ module.exports = {
     updateProfilePic: async (req, res) => {
         const db = req.app.get("db")
         const {user_id} = req.session.user
-        const {profile_pic} = req.body
-        const updatedUser = await db.auth.update_profile_pic(+user_id, profile_pic)
-        req.session.user = updatedUser
+        const {profilePic} = req.body
+        await db.auth.update_profile_pic(+user_id, profilePic)
+        req.session.user.profile_pic = profilePic
         
         res.status(200).send(req.session.user)
     },

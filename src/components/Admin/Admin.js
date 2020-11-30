@@ -13,7 +13,7 @@ const Admin = () => {
 
     useEffect(() => {
         getAllHolds()
-      }, [])
+      }, []) 
 
     const getAllHolds = async () => {
         try {

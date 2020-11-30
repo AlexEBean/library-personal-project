@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from 'axios'
 
-
 const UserHold = (props) =>  {
     const {title, cover, year, author, hold_id} = props.hold
 
