@@ -12,40 +12,39 @@ const Admin = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        getAllHolds()
-      }, []) 
-
-    const getAllHolds = async () => {
-        try {
-          const res = await axios.get("/api/holds")
-          dispatch(getHolds(res.data))
-        } catch (err) {
-          console.log(err)
+        const getAllHolds = async () => {
+            try {
+              const res = await axios.get("/api/holds")
+              dispatch(getHolds(res.data))
+            } catch (err) {
+              console.log(err)
+            }
         }
-    }
+        getAllHolds()
+      }, [dispatch]) 
 
     const mappedHolds = holds.map((hold, index) => {
         return (
-            user.admin 
-            ?
                 <AllHolds 
                 key = {`${hold.hold_id}-${index}`} 
                 hold = {hold}
                 user = {user}
-                getAllHolds = {getAllHolds}
                 />
-            :
-                null
         )
     })
     
     return (
         <div>
-            <ul
+            {user.admin
+            ?
+                <ul
                 style = {{listStyle: "none"}} 
-            >
-                {mappedHolds}
-            </ul>
+                >
+                    {mappedHolds}
+                </ul>
+            :
+                null
+            }
         </div>
     )
 }

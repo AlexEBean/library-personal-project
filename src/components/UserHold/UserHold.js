@@ -7,7 +7,7 @@ const UserHold = (props) =>  {
     const deleteHold = async (holdId) => {
         try {
             await axios.delete (`/api/hold/${holdId}`)
-            props.getAllHolds()
+            props.getUserHolds()
         } catch (err) {
             console.log(err)
         }

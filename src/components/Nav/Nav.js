@@ -26,15 +26,6 @@ const Nav = () => {
             <Link to = "/">
                 Home
             </Link>
-            <Link to = "/login">
-                Login
-            </Link>
-            <Link to = "/account">
-                Account
-            </Link>
-            <Link to = "/catalog">
-                Catalog
-            </Link>
             {admin
             ?
                 <Link to = "/admin">
@@ -42,15 +33,30 @@ const Nav = () => {
                 </Link>
             :
                 null}
+            <Link to = "/catalog">
+                Catalog
+            </Link>
             {user_id
             ?
-            <Link to = "/"
-                onClick = {logout}
-            >
-                Logout
-            </Link>
+                <Link to = "/account">
+                    Account
+                </Link>
             :
-                null}
+                null
+            }
+            {user_id
+            ?
+                
+                <Link to = "/"
+                    onClick = {logout}
+                >
+                    Logout
+                </Link>
+            :
+                <Link to = "/login">
+                    Login
+                </Link>
+            }
         </div>
     )
 }

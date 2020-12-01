@@ -1,9 +1,7 @@
 import React from 'react'
-import axios from 'axios'
-
 
 const AllHolds = (props) =>  {
-    const {first_name, last_name, title, cover, year, author, user_id} = props.hold
+    const {first_name, last_name, title, cover, year, author} = props.hold
 
     return (
         <div>
