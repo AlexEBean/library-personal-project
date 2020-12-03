@@ -1,0 +1,19 @@
+@import "../../styles/_mixins.scss", "../../styles/_variables.scss";
+
+.login {
+    @include base;
+    form{
+        @include form;
+    
+        h1 {
+            color: $tertiary-color
+        }
+
+        .link {
+            color: $tertiary-color;
+            &:hover {
+                color: $list-color;
+            }
+        }
+    }
+}

@@ -1,0 +1,29 @@
+@import "../../styles/_mixins.scss", "../../styles/_variables.scss";
+
+.catalog {
+    @include base;
+    
+    .add-book-box {
+        height: 60px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .add-book-buttons {
+            @include button;
+            margin: 30px;
+        }
+
+        input {
+           margin: 30px; 
+        }
+    }
+    .book-list {
+        margin-top: -20px;
+
+        .book {
+            @include list-item;
+        }
+    }
+}

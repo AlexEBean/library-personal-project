@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import {connect, useSelector} from "react-redux"
 import axios from "axios"
 import Book from "../Book/Book"
-
+import "./catalog.scss"
 
 const Catalog = () => {
     const [books, setBooks] = useState([])
@@ -52,54 +52,66 @@ const Catalog = () => {
     })
 
     return (
-        <div>
-
-            {add 
-            ?
-                <form>
-                    <input
-                        name = "title"
-                        value = {title}
-                        placeholder = "Book Title"
-                        onChange = {e => setTitle(e.target.value)}
-                    />
-                    <input
-                        name = "cover"
-                        value = {cover}
-                        placeholder = "Book Cover URL"
-                        onChange = {e => setCover(e.target.value)}
-                    />
-                    <input
-                        name = "author"
-                        value = {author}
-                        placeholder = "Author"
-                        onChange = {e => setAuthor(e.target.value)}
-                    />
-                    <input
-                        name = "year"
-                        value = {year}
-                        placeholder = "Year published"  
-                        onChange = {e => setYear(e.target.value)}
-                    />
-                    <button 
-                        onClick = {addBook} 
-                        > 
-                        Submit 
-                    </button>
-                </form>
-            :
-                user.admin
-                    ? <button
-                        onClick = {() => {
-                            setAdd(!add)
-                        }}
-                    >
-                        Add Book
-                    </button>
-                    : null
-            }
+        <div className = "catalog">
+            <div className = "add-book-box">
+                {add 
+                ?
+                    <form>
+                        <input
+                            name = "title"
+                            value = {title}
+                            placeholder = "Book Title"
+                            onChange = {e => setTitle(e.target.value)}
+                        />
+                        <input
+                            name = "cover"
+                            value = {cover}
+                            placeholder = "Book Cover URL"
+                            onChange = {e => setCover(e.target.value)}
+                        />
+                        <input
+                            name = "author"
+                            value = {author}
+                            placeholder = "Author"
+                            onChange = {e => setAuthor(e.target.value)}
+                        />
+                        <input
+                            name = "year"
+                            value = {year}
+                            placeholder = "Year published"  
+                            onChange = {e => setYear(e.target.value)}
+                        />
+                        <button 
+                            className = "add-book-buttons"
+                            onClick = {addBook} 
+                            > 
+                            Submit 
+                        </button>
+                        <button
+                            className = "add-book-buttons"
+                            onClick = {() => {
+                                setAdd(!add)
+                            }}
+                        >
+                            Cancel
+                        </button>
+                    </form>
+                :
+                    user.admin
+                        ? <button
+                            className = "add-book-buttons"
+                            onClick = {() => {
+                                setAdd(!add)
+                            }}
+                        >
+                            Add Book
+                        </button>
+                        : null
+                }
+            </div>
 
             <ul
+                className = "book-list"
                 style = {{listStyle: "none"}} 
             >
                 {mappedBooks}

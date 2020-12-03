@@ -3,6 +3,7 @@ import {Link, useHistory} from "react-router-dom"
 import {connect, useDispatch, useSelector} from "react-redux"
 import {logoutUser} from "../../redux/authReducer"
 import axios from "axios"
+import "./nav.scss"
 
 const Nav = () => {
     const {user} = useSelector((state) => state.reducer)
@@ -23,22 +24,22 @@ const Nav = () => {
 
     return (
         <div className = "nav">
-            <Link to = "/">
+            <Link to = "/" className = "link">
                 Home
             </Link>
             {admin
             ?
-                <Link to = "/admin">
+                <Link to = "/admin" className = "link">
                 Admin
                 </Link>
             :
                 null}
-            <Link to = "/catalog">
+            <Link to = "/catalog" className = "link">
                 Catalog
             </Link>
             {user_id
             ?
-                <Link to = "/account">
+                <Link to = "/account" className = "link">
                     Account
                 </Link>
             :
@@ -48,12 +49,13 @@ const Nav = () => {
             ?
                 
                 <Link to = "/"
+                    className = "link"
                     onClick = {logout}
                 >
                     Logout
                 </Link>
             :
-                <Link to = "/login">
+                <Link to = "/login" className = "link">
                     Login
                 </Link>
             }

@@ -26,35 +26,40 @@ const Book = (props) =>  {
     }
 
     return (
-        <div>
+        <div className = "book">
             <img src = {cover} alt = "book cover"/>
-            <h1>{title}</h1>
-            <h2>{author}</h2>
-            <h3>{year}</h3>
-            {user_id
-            ? 
-                <button
-                    onClick = {() =>
-                        addHold(book_id)
-                    }
-                >
-                    Place Hold
-                </button>
-            :
-                null
-            }
-            {admin
-            ? 
-                <button
-                    onClick = {() =>
-                        deleteBook(book_id)
-                    }
-                >
-                    Remove Book
-                </button>
-            :
-                null
-            }
+            <div className = "info">
+                <h1>{title}</h1>
+                <h2>{author}</h2>
+                <h3>{year}</h3>
+            </div>
+            <div className = "buttons">
+                {user_id
+                ? 
+                    <button
+                        onClick = {() =>
+                            addHold(book_id)
+                        }
+                    >
+                        Place Hold
+                    </button>
+                :
+                    null
+                }
+                {admin
+                ? 
+                    <button
+                        className = "remove-button"
+                        onClick = {() =>
+                            deleteBook(book_id)
+                        }
+                    >
+                        Remove Book
+                    </button>
+                :
+                    null
+                }
+            </div>
         </div>
     )
 }

@@ -14,18 +14,23 @@ const UserHold = (props) =>  {
     }
 
     return (
-        <div>
+        <div className = "user-hold">
             <img src = {cover} alt = "book cover"/>
-            <h1>{title}</h1>
-            <h2>{author}</h2>
-            <h3>{year}</h3>
-            <button
-                    onClick = {() =>
-                        deleteHold(hold_id)
-                    }
-                >
-                    Remove Hold
+            <div className = "info">
+                <h1>{title}</h1>
+                <h2>{author}</h2>
+                <h3>{year}</h3>
+            </div>
+            <div className = "buttons">
+                <button
+                        className = "remove-button"
+                        onClick = {() =>
+                            deleteHold(hold_id)
+                        }
+                    >
+                        Remove Hold
                 </button>
+            </div>
         </div>
     )
 }

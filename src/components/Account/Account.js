@@ -3,6 +3,7 @@ import { getHolds } from '../../redux/holdReducer'
 import axios from "axios"
 import {useDispatch, useSelector} from "react-redux"
 import UserHold from "../UserHold/UserHold"
+import "./account.scss"
 
 const Account = () => {
     const {user} = useSelector((state) => state.reducer)
@@ -39,8 +40,8 @@ const Account = () => {
         <div>
             {user_id 
             ?
-                <div>
-                    <img src = {profile_pic} alt = "profile"/>
+                <div className = "account">
+                    <img src = {profile_pic} alt = "profile" className = "profile-picture"/>
                     <ul
                         style = {{listStyle: "none"}} 
                     >

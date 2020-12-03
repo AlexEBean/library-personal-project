@@ -3,6 +3,7 @@ import axios from "axios"
 import {loginUser} from "../../redux/authReducer"
 import {connect, useDispatch} from "react-redux"
 import {useHistory} from "react-router-dom"
+import "./register.scss"
 
 const Register = () => {
     const dispatch = useDispatch()
@@ -40,9 +41,10 @@ const Register = () => {
     }
 
     return (
-        <div className = "auth">
+        <div className = "register">
             <form>
-                <input
+                <h3>To register, please fill the blanks below:</h3>
+                <input 
                     name = "first name"
                     value = {firstName}
                     placeholder = "First Name"

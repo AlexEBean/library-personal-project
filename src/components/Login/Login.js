@@ -3,6 +3,7 @@ import axios from "axios"
 import {loginUser} from "../../redux/authReducer"
 import {connect, useDispatch} from "react-redux"
 import {useHistory, Link} from "react-router-dom"
+import "./login.scss"
 
 const Login = () => {
 
@@ -20,13 +21,14 @@ const Login = () => {
         }
         catch(err) {
             console.log(err)
-            alert("Unable to register at this time")
+            alert("Invalid email or password")
         }
     }
 
     return (
-        <div>
+        <div className = "login">
             <form>
+                <h1>Library Login</h1>
                 <input
                     name = "email"
                     value = {email}
@@ -41,8 +43,8 @@ const Login = () => {
                     onChange = {e => setPassword(e.target.value)}
                 />
                 <button onClick = {login} > Login </button>
+                <Link to = "/register" className = "link"> Need to Register? </Link>
             </form>
-                <Link to = "/register"> Need to Register? </Link>
         </div>
     )
 }

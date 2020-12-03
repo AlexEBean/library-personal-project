@@ -4,7 +4,7 @@ import routes from './routes.js';
 
 function App() {
   return (
-    <div className="App">
+    <div className = "App">
       <Nav/>
       {routes}
     </div>

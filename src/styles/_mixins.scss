@@ -1,0 +1,91 @@
+@mixin base {
+    height: 100vh;
+    max-height: fit-content;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: $base-color;
+    color: $tertiary-color;
+  }
+
+@mixin form {
+  background: black;
+  height: 60%;
+  width: 20%;
+  border-radius: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px;
+
+  input {
+    font-family: $primary-font;
+    width: 70%;
+  }
+
+  button {
+      @include button
+  }
+}
+
+@mixin list-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+  height: 20vh;
+  width: 40vw;
+  font-family: $primary-font;
+  color: black;
+  margin: 20px;
+  background-color: $tertiary-color;
+
+  
+  img {
+      height: 85%;
+      width: 15%;
+      margin: 10px;
+  }
+
+  .info {
+      height: 100%;
+      width: 45%;
+      display: flex;
+      flex-direction: column;
+      padding-left: 10%;
+      padding-right: 10%;
+
+      h2 {
+          margin: 5px;
+      }
+  }
+
+  .buttons {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+
+      button {
+          @include button
+      }
+  
+      .remove-button {
+          &:hover {
+              color: red;
+          }
+      }
+  }
+}
+
+@mixin button {
+  font-family: $secondary-font;
+  &:hover {
+      color: $list-color;
+      background-color: $base-color;
+  }
+}

@@ -1,0 +1,9 @@
+@import "../../styles/_mixins.scss", "../../styles/_variables.scss";
+
+.admin {
+    @include base;
+
+    .one-hold {
+        @include list-item
+    }
+}

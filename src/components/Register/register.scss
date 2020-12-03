@@ -1,0 +1,13 @@
+@import "../../styles/_mixins.scss", "../../styles/_variables.scss";
+
+.register {
+    @include base;
+    form{
+        @include form;
+
+        h3 {
+            color: $tertiary-color;
+            font-family: $secondary-font;
+        }
+    }
+}

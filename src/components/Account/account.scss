@@ -1,0 +1,16 @@
+@import "../../styles/_mixins.scss", "../../styles/_variables.scss";
+
+.account {
+    @include base;
+
+    .profile-picture {
+        display: flex;
+        position: absolute;
+        margin-top: 5vh;
+        left: 5vw;
+    }
+
+    .user-hold {
+        @include list-item
+    }
+}

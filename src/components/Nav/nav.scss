@@ -1,0 +1,21 @@
+@import "../../styles/_variables.scss";
+
+.nav {
+    width: 100vw;
+    height: 10vh;
+    background-color: rgb(32,64,105);
+    font-family: $primary-font;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.link {
+    text-decoration: none;
+    color: $tertiary-color;
+    font-size: 24px;
+
+    &:hover{
+        color: $list-color;
+    }
+}

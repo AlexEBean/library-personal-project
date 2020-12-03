@@ -3,7 +3,7 @@ import { getHolds } from '../../redux/holdReducer'
 import axios from "axios"
 import {useDispatch, useSelector} from "react-redux"
 import AllHolds from "../AllHolds/AllHolds"
-
+import "./admin.scss"
 
 const Admin = () => {
     const {user} = useSelector((state) => state.reducer)
@@ -34,7 +34,7 @@ const Admin = () => {
     })
     
     return (
-        <div>
+        <div class = "admin">
             {user.admin
             ?
                 <ul
