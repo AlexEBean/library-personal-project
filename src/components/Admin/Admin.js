@@ -37,7 +37,7 @@ const Admin = () => {
         <div class = "admin">
             {user.admin
             ?
-                <ul
+                <ul className = "all-holds"
                 style = {{listStyle: "none"}} 
                 >
                     {mappedHolds}

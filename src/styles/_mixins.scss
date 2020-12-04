@@ -12,8 +12,8 @@
 
 @mixin form {
   background: black;
-  height: 60%;
-  width: 20%;
+  height: 80%;
+  width: 40%;
   border-radius: 10%;
   display: flex;
   flex-direction: column;
@@ -24,11 +24,12 @@
 
   input {
     font-family: $primary-font;
-    width: 70%;
+    width: 55%;
   }
 
   button {
-      @include button
+      @include button;
+      width: 35%;
   }
 }
 
@@ -36,9 +37,9 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  
-  height: 20vh;
-  width: 40vw;
+  justify-content: space-around;
+  height: 30%;
+  width: 80%;
   font-family: $primary-font;
   color: black;
   margin: 20px;
@@ -46,19 +47,17 @@
 
   
   img {
-      height: 85%;
-      width: 15%;
-      margin: 10px;
+      height: 80%;
+      width: 25%;
+      margin: 20px;
   }
 
   .info {
       height: 100%;
-      width: 45%;
+      width: 30%;
       display: flex;
       flex-direction: column;
-      padding-left: 10%;
-      padding-right: 10%;
-
+      justify-content: space-around;
       h2 {
           margin: 5px;
       }
@@ -66,12 +65,14 @@
 
   .buttons {
       height: 100%;
+      width: 25%;
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
 
       button {
-          @include button
+          @include button;
+          width: 60%;
       }
   
       .remove-button {
@@ -83,6 +84,8 @@
 }
 
 @mixin button {
+  height: 5vh;
+  width: 7vw;
   font-family: $secondary-font;
   &:hover {
       color: $list-color;

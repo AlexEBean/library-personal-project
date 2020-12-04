@@ -83,7 +83,10 @@ const Catalog = () => {
                         />
                         <button 
                             className = "add-book-buttons"
-                            onClick = {addBook} 
+                            onClick = {(e) => {
+                                addBook(e)
+                                setAdd(!add)
+                            }}
                             > 
                             Submit 
                         </button>

@@ -3,14 +3,125 @@
 .account {
     @include base;
 
-    .profile-picture {
-        display: flex;
-        position: absolute;
-        margin-top: 5vh;
-        left: 5vw;
+    button {
+        @include button;
+        height: 9%;
+        width: 40%;
     }
 
-    .user-hold {
-        @include list-item
+    input {
+        width: 50%;
+    }
+
+    .account-info{
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        
+        .profile-info {
+            height: 80%;
+            width: 25%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .profile-picture {
+                height: 40%;
+                width: 80%;
+                margin: 20px;
+            }
+            .update-form {
+                height: 30%;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+                
+            }
+            
+        }
+    
+        .user-holds{
+            height: fit-content;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            .user-hold {
+                background-color: green;
+                @include list-item;
+                .buttons {
+                    height: 100%;
+                    width: 20%;
+                    button {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $media-tablet){
+    .account{
+        button {
+            font-size: 9px;
+        }
+        h1 {
+            font-size: 16px;
+        }
+        h2 {
+            font-size: 13px;
+        }
+        h3 {
+            font-size: 11px;
+        }
+
+        .account-info{
+            .profile-info {
+                .profile-picture{
+                    height: 20%;
+                }
+            }
+            .buttons {
+                button {
+                    font-size: 9px;
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $media-mobile){
+    .account{
+        button {
+            font-size: 7px;
+            height: 5%;
+            width: 60%;
+        }
+        h1 {
+            font-size: 12px;
+        }
+        h2 {
+            font-size: 10px;
+        }
+        h3 {
+            font-size: 8px;
+        }
+        
+        .account-info{
+            .profile-info {
+                .profile-picture{
+                    height: 15%;
+                }
+            }
+            .buttons {
+                button {
+                    font-size: 7px;
+                }
+            }
+        }
     }
 }

@@ -2,9 +2,9 @@
 
 .catalog {
     @include base;
+    height: fit-content;
     
     .add-book-box {
-        height: 60px;
         width: 100%;
         display: flex;
         justify-content: center;
@@ -13,17 +13,91 @@
         .add-book-buttons {
             @include button;
             margin: 30px;
+            width: 12%;
         }
 
-        input {
-           margin: 30px; 
+        form {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: aqua;
+            input {
+                margin: 10px;
+                height: 50%;
+                width: 40%;
+            }
         }
     }
     .book-list {
-        margin-top: -20px;
-
+        height: fit-content;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         .book {
             @include list-item;
+            .buttons {
+                button {
+                    margin: 16px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $media-tablet){
+    .catalog{
+        .add-book-buttons {
+            font-size: 9px;
+        }
+        .book-list{
+            .book {
+                h1 {
+                    font-size: 16px;
+                }
+                h2 {
+                    font-size: 13px;
+                }
+                h3 {
+                    font-size: 11px;
+                }
+                .buttons {
+                    button {
+                        font-size: 9px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $media-mobile){
+    .catalog{
+        .add-book-box{
+            .add-book-buttons{
+                font-size: 7px
+            }
+        }
+        .book-list{
+            .book {
+                h1 {
+                    font-size: 12px;
+                }
+                h2 {
+                    font-size: 10px;
+                }
+                h3 {
+                    font-size: 8px;
+                }
+                .buttons {
+                    button {
+                        font-size: 7px;
+                    }
+                }
+            }
         }
     }
 }

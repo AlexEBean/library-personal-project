@@ -11,3 +11,34 @@
         }
     }
 }
+
+@media (max-width: $media-tablet){
+
+    .register {
+        form {
+            h3 {
+                font-size: 11px;
+            }
+
+            button {
+                width: 100px;
+            }
+        }
+    }
+    
+}
+
+@media (max-width: $media-mobile){
+
+    .register {
+        form {
+            h3 {
+                font-size: 8px;
+            }
+            
+            button {
+                width: 80px;
+            }
+        }
+    }
+}
