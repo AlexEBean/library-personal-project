@@ -54,7 +54,7 @@ app.post("/api/hold/:bookId", checkUser, holdCtrl.addHold)
 app.delete("/api/hold/:holdId", checkUser, holdCtrl.deleteHold)
 
 // # Additional Technologies
-// app.get("/api/signs3", checkUser, awsCtrl.config)
+app.get("/api/signs3", checkUser, awsCtrl.config)
 app.put("/api/user", checkUser, awsCtrl.updateProfilePic)
 app.post("/api/email", emailCtrl.email)
 

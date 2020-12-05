@@ -17,6 +17,7 @@ const Login = () => {
         try {
             const res = await axios.post("/auth/login", {email, password})
             dispatch(loginUser(res.data))
+            console.log(res.data)
             history.push("/account")
         }
         catch(err) {

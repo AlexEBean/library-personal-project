@@ -5,6 +5,7 @@ const initialState = {
 
 const LOGIN_USER = "LOGIN_USER"
 const LOGOUT_USER = "LOGOUT_USER"
+const GET_USER = "GET_USER"
 
 export function loginUser(user){
     return {
@@ -20,6 +21,12 @@ export function logoutUser() {
     }
 }
 
+export function getUser(user){
+    return {
+        type: GET_USER,
+        payload: user
+    }
+}
 
 export default function reducer (state = initialState, action){
     const {type, payload} = action
@@ -28,6 +35,10 @@ export default function reducer (state = initialState, action){
             return {...state, user: payload, isLoggedIn: true}
         case LOGOUT_USER: 
             return payload
+        case GET_USER + "_PENDING":
+            return state
+        case GET_USER + "_FULFILLED":
+            return {...state, user: payload}
         default:
             return state
     }

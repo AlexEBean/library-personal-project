@@ -2,19 +2,14 @@
 
 .account {
     @include base;
-
-    button {
-        @include button;
-        height: 9%;
-        width: 40%;
-    }
+    height: 200vh;
 
     input {
         width: 50%;
     }
 
     .account-info{
-        height: 100vh;
+        height: 60vh;
         width: 100%;
         display: flex;
         
@@ -24,22 +19,51 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-
-            .profile-picture {
-                height: 40%;
-                width: 80%;
-                margin: 20px;
+            justify-content: center;
+            position: relative;
+            text-align: center;
+        
+            button {
+                @include button;
+                display: flex;
+                height: 10%;
+                position: absolute;
+                bottom: 0;
+                line-height: 40px;
             }
-            .update-form {
-                height: 30%;
-                width: 100%;
+
+            .pic-box{
+                height: 100%;
+                width: 90%;
                 display: flex;
                 flex-direction: column;
-                justify-content: space-around;
+                justify-content: center;
                 align-items: center;
-                
+                position: relative;
+
+                .profile-picture {
+                    height: 50%;
+                    width: 70%;
+                    margin: 20px;
+                    position: absolute;
+                    top: 10px;
+                }
+
+                .drop-zone{
+                    height: 17%;
+                    width: 80%;
+                    display: flex;
+                    position: absolute;
+                    bottom: 20%;
+                    background-color: rebeccapurple;
+                }
+                .cancel-button{
+                    width: 15%;
+                }
+                .update-button{
+                    width: 45%;
+                }
             }
-            
         }
     
         .user-holds{
@@ -47,9 +71,7 @@
             width: 50%;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             .user-hold {
-                background-color: green;
                 @include list-item;
                 .buttons {
                     height: 100%;

@@ -39,7 +39,6 @@
   align-items: center;
   justify-content: space-around;
   height: 30%;
-  width: 80%;
   font-family: $primary-font;
   color: black;
   margin: 20px;
@@ -86,6 +85,7 @@
 @mixin button {
   height: 5vh;
   width: 7vw;
+  text-align: center;
   font-family: $secondary-font;
   &:hover {
       color: $list-color;

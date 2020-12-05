@@ -39,6 +39,7 @@
         align-items: center;
         .book {
             @include list-item;
+            width: 60%;
             .buttons {
                 button {
                     margin: 16px;

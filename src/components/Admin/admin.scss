@@ -2,8 +2,15 @@
 
 .admin {
     @include base;
-    .one-hold {
-        @include list-item
+    height: fit-content;
+
+    .all-holds{
+        height: fit-content;
+        width: 65%;
+        .one-hold {
+            @include list-item;
+            width: 80%;
+        }
     }
 }
 
