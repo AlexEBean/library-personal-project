@@ -14,7 +14,7 @@ const Account = () => {
     const {user_id} = user
     let {profile_pic} = user
     const [update, setUpdate] = useState(false)
-    const [picURL, setUrl] = useState(`${profile_pic}`)
+    const [picURL, setUrl] = useState("")
     const [isUploading, setUploading] = useState(false)
 
     const dispatch = useDispatch()
@@ -66,16 +66,10 @@ const Account = () => {
         }
         axios.put(signedRequest, file, options).then(() => {
             setUrl(url)
-            axios.put("/api/user", {user_id, url}).then(() => {
-                axios.get("/api/user").then((res) => {
-                    console.log(res.data)
-                    
-                    dispatch(getUser(res.data))
-                }).catch(err => {
-                    if (err.response.status !== 401) {
-                        console.log(err)
-                    }
-                })
+            axios.put("/api/user", {user_id, url}).then((res) => {
+                console.log(res.data)
+                dispatch(getUser(res.data))
+                setUpdate(false)
             })
             setUploading(false)
         }).catch(err => {
@@ -107,48 +101,42 @@ const Account = () => {
             ?
                 <div className = "account-info">
                     <div className = "profile-info">
+                        <div className="pic-box">
+                            <img className = "profile-picture" alt="profile preview" src = {profile_pic
+                                ? 
+                                    `${profile_pic}`
+                                : 
+                                    "https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1-744x744.jpg"                        
+                                }/>
                             {update
                             ?
-                                <div className="pic-box">
-                                    <img className = "profile-picture" alt="profile preview" src = {(profile_pic) 
-                                        ? 
-                                            `${picURL}` 
-                                        : 
-                                            "https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1-744x744.jpg"
-                                    }/>
-                                    <div {...getRootProps({className: "drop-zone"})}>
-                                        <input {...getInputProps()} />
-                                        {isUploading 
-                                        ? 
-                                            <h2>Please Wait...</h2> 
-                                        : 
-                                            <h2>Drop File or Click Here</h2>}
-                                    </div>
-                                    <button
-                                        className = "cancel-button"
-                                        onClick = {() => {
-                                            setUpdate(!update)
-                                        }}> 
-                                        Cancel
-                                    </button> 
-                                </div>
-                            :
-                            <div className="pic-box">
-                                <img className = "profile-picture" alt="profile preview" src = {(profile_pic) 
+                            <div className = "update-box">
+                                <div {...getRootProps({className: "drop-zone"})}>
+                                    <input {...getInputProps()} />
+                                    {isUploading 
                                     ? 
-                                        `${profile_pic}` 
+                                        <h3>Please Wait...</h3> 
                                     : 
-                                        "https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1-744x744.jpg"
-                                }/>
+                                        <h3>Drop File or Click Here</h3>}
+                                </div>
                                 <button
-                                    className = "update-button"
+                                    className = "cancel-button"
                                     onClick = {() => {
                                         setUpdate(!update)
                                     }}> 
-                                    Update Profile Picture 
-                                </button>  
+                                    Cancel
+                                </button> 
                             </div>
-                            }
+                            :
+                            <button
+                                className = "update-button"
+                                onClick = {() => {
+                                    setUpdate(!update)
+                                }}> 
+                                Update Profile Picture 
+                            </button>  
+                        }
+                        </div>
                     </div>
                     <ul className = "user-holds"
                         style = {{listStyle: "none"}} 

@@ -40,6 +40,10 @@ const Register = () => {
         }
     }
 
+    const backToLogin = async (e) => {
+        history.push("/login")
+    }
+
     return (
         <div className = "register">
             <form>
@@ -70,6 +74,7 @@ const Register = () => {
                     onChange = {e => setPassword(e.target.value)}
                 />
                 <button onClick = {register} > Register </button>
+                <button onClick = {backToLogin} > Back to login </button>
             </form>
         </div>
     )

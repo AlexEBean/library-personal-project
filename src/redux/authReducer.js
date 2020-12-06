@@ -35,9 +35,7 @@ export default function reducer (state = initialState, action){
             return {...state, user: payload, isLoggedIn: true}
         case LOGOUT_USER: 
             return payload
-        case GET_USER + "_PENDING":
-            return state
-        case GET_USER + "_FULFILLED":
+        case GET_USER:
             return {...state, user: payload}
         default:
             return state
