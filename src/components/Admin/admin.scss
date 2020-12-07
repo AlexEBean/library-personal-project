@@ -2,7 +2,7 @@
 
 .admin {
     @include base;
-    height: 200vh;
+    height: fit-content;
 
     .all-holds{
         max-height: fit-content;

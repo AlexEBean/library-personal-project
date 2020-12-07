@@ -34,12 +34,13 @@ const Admin = () => {
     })
     
     return (
-        <div class = "admin">
+        <div className = "admin">
             {user.admin
             ?
                 <ul className = "all-holds"
                 style = {{listStyle: "none"}} 
                 >
+                    <h2>All User Holds</h2>
                     {mappedHolds}
                 </ul>
             :

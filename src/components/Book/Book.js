@@ -4,7 +4,7 @@ import {useHistory} from "react-router-dom"
 
 const Book = (props) =>  {
     const {title, cover, author, year, book_id} = props.book
-    const {user_id, admin} = props.user
+    const {user_id, admin, email} = props.user
     const history = useHistory()
 
     const deleteBook = async (bookId) => {
@@ -16,10 +16,24 @@ const Book = (props) =>  {
         }
     }
 
+    const newHoldEmail = async () => {
+        const subject = "New Hold Placed"
+        const text = `Hello, you've recently placed a hold on ${title}.  We will let you know when it's available.`
+
+        await axios.post("/api/email", {email, subject, text})
+        try {
+            console.log("Email sent")
+        } catch (err) {
+            console.log(err)
+            alert("Unable to send email")
+        }
+    }
+
     const addHold = async (bookId) => {
         try {
             await axios.post (`/api/hold/${bookId}`)
             history.push("/account")
+            newHoldEmail()
         } catch (err) {
             console.log(err)
         }

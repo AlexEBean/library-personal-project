@@ -141,6 +141,7 @@ const Account = () => {
                     <ul className = "user-holds"
                         style = {{listStyle: "none"}} 
                     >
+                        <h2>Your Current Holds</h2>
                         {mappedHolds}
                     </ul>
                 </div>   

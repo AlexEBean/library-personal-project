@@ -2,19 +2,21 @@
 
 .account {
     @include base;
-    height: 200vh;
+    height: fit-content;
+    
 
     input {
         width: 50%;
     }
 
     .account-info{
-        height: 60vh;
+        height: 100%;
+        max-height: fit-content;
         width: 100%;
         display: flex;
         
         .profile-info {
-            height: 100%;
+            height: 100vh;
             width: 25%;
             display: flex;
             flex-direction: column;
@@ -23,7 +25,8 @@
         
             button {
                 @include button;
-                position: absolute;
+                height: 6%;
+                position: relative;
             }
 
             .pic-box{
@@ -36,52 +39,53 @@
                 position: relative;
 
                 .profile-picture {
-                    height: 50%;
+                    height: 36%;
                     width: 70%;
                     margin: 10px;
                     position: absolute;
-                    top: 10px
+                    top: 5%;
                 }
 
                 .update-button{
-                    height: 10%;
                     width: 45%;
-                    bottom: 30%;
+                    bottom: 3%;
                 }
 
                 .update-box {
-                    height: 60%;
+                    height: 44%;
                     width: 100%;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    justify-content: space-around;
-                    position: absolute;
-                    bottom: 0;
+                    position: relative;
+                    top: 14%;
+                    
                     
                     .drop-zone{
-                        height: 30%;
+                        height: 18%;
                         width: 85%;
                         background-color: rebeccapurple;
+                        margin: 20px;
                     }
                     .cancel-button{
-                        height: 10%;
                         width: 35%;
-                        bottom: 10%;
                     }
                 }
             }
         }
     
         .user-holds{
-            height: fit-content;
             width: 55%;
+            height: fit-content;
             display: flex;
             flex-direction: column;
+            align-items: center;
             .user-hold {
                 @include list-item;
+                height: 35vh;
+                width: 90%;
                 .buttons {
-                    height: 100%;
+                    height: 10%;
                     width: 20%;
                     button {
                         width: 100%;
@@ -111,23 +115,29 @@
             .profile-info {
                 .pic-box{
                     .profile-picture{
-                        height: 25%;
+                        height: 20%;
                     }
 
                     .update-box{
-                        bottom: 30%;
+                        top: 0%;
+                        margin-bottom: 30%;
                         .drop-zone{
-                            height: 20%;
+                            height: 11%;
                         }
                         .cancel-button{
                             width: 40%;
-                            bottom: 25%;
                         }
                     }
 
                     .update-button{
-                        bottom: 55%;
+                        bottom: 20%;
                     }
+                }
+            }
+
+            .user-holds{
+                .user-hold {
+                    height: 20vh;
                 }
             }
         }
@@ -155,22 +165,27 @@
             .profile-info {
                 .pic-box{
                     .profile-picture{
-                        height: 20%;
+                        height: 15%;
                         width: 80%;
                     }
                     .update-box{
-                        bottom: 40%;
+                        position: absolute;
+                        top: 20%;
                         .drop-zone{
                             height: 12%;
-                        }
-                        .cancel-button{
-                            bottom: 30%;
                         }
                     }
 
                     .update-button{
+                        bottom: 25%;
                         width: 50%;
                     }
+                }
+            }
+
+            .user-holds{
+                .user-hold {
+                    height: 15vh;
                 }
             }
         }

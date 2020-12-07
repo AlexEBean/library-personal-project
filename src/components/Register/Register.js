@@ -22,21 +22,21 @@ const Register = () => {
             console.log("Email sent")
         } catch (err) {
             console.log(err)
-            alert("Unable to email")
+            alert("Unable to send email")
         }
     }
 
     const register = async (e) => {
         e.preventDefault()
-        welcomeEmail()
         try {
             const res = await axios.post("/auth/register", {firstName, lastName, email, password})
             dispatch(loginUser(res.data))
             history.push("/account")
+            welcomeEmail()
         }
         catch(err) {
             console.log(err)
-            alert("Unable to register at this time")
+            alert("Email account already registered")
         }
     }
 
