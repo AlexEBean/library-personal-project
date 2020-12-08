@@ -6,6 +6,7 @@ import UserHold from "../UserHold/UserHold"
 import {getUser} from "../../redux/authReducer"
 import { v4 as randomString } from 'uuid'
 import {useDropzone} from 'react-dropzone'
+import { GridLoader } from 'react-spinners'
 import "./account.scss"
 
 const Account = () => {
@@ -14,7 +15,7 @@ const Account = () => {
     const {user_id} = user
     let {profile_pic} = user
     const [update, setUpdate] = useState(false)
-    const [picURL, setUrl] = useState("")
+    const [picUrl, setUrl] = useState("")
     const [isUploading, setUploading] = useState(false)
 
     const dispatch = useDispatch()
@@ -32,14 +33,6 @@ const Account = () => {
         getUserHolds()
       }, [getUserHolds])
 
-    
-      const {getRootProps, getInputProps} = useDropzone({
-        accept: "image/*",
-        multiple: false,
-        onDrop: (file) => {
-            getSignedReq(file)
-        }
-    })
 
     const getSignedReq = ([file]) => {
         setUploading(true)
@@ -83,6 +76,13 @@ const Account = () => {
         
     }
 
+    const {getRootProps, getInputProps} = useDropzone({
+        accept: "image/*",
+        multiple: false,
+        onDrop: (file) => {
+            getSignedReq(file)
+        }
+    })
 
     const mappedHolds = holds.map((hold, index) => {
         return (
@@ -115,7 +115,7 @@ const Account = () => {
                                     <input {...getInputProps()} />
                                     {isUploading 
                                     ? 
-                                        <h3>Please Wait...</h3> 
+                                        <GridLoader /> 
                                     : 
                                         <h3>Drop File or Click Here</h3>}
                                 </div>

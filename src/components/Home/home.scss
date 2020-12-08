@@ -3,4 +3,9 @@
 .home {
     @include base;
     text-align: center;
+    justify-content: flex-start;
+    background: url(https://static.seattletimes.com/wp-content/uploads/2019/07/Casey-den-780x507.jpg) center no-repeat;
+    background-size: cover;
+    font-family: $primary-font;
+    color: rgb(242, 242, 242);
 }

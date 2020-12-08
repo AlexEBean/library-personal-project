@@ -18,6 +18,10 @@
             color: $list-color;
         }
     }
+
+    #logout:hover {
+        color: $delete-color
+    }
 }
 
 @media (max-width: $media-tablet){

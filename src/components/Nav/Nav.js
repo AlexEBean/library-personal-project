@@ -50,6 +50,7 @@ const Nav = () => {
                 
                 <Link to = "/"
                     className = "link"
+                    id = "logout"
                     onClick = {logout}
                 >
                     Logout

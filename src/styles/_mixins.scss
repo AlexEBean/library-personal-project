@@ -1,5 +1,5 @@
 @mixin base {
-    height: 90vh;
+    height: 92vh;
     max-height: fit-content;
     width: 100vw;
     display: flex;
@@ -25,6 +25,7 @@
   input {
     font-family: $primary-font;
     width: 55%;
+    border-radius: 12%;
   }
 
   button {
@@ -42,6 +43,7 @@
   color: black;
   margin: 20px;
   background-color: $tertiary-color;
+  border-radius: 10%;
 
   
   img {
@@ -75,19 +77,23 @@
   
       .remove-button {
           &:hover {
-              color: red;
+              color: $delete-color;
           }
       }
   }
 }
 
 @mixin button {
-  height: 5vh;
-  width: 7vw;
+  font-size: 18px;
   text-align: center;
   font-family: $secondary-font;
+  border-radius: 30%;
   &:hover {
-      color: $list-color;
-      background-color: $base-color;
+      font-weight: bold;
+      background-color: $button-color;
+  }
+
+  @media (max-width: $media-tablet){
+    font-size: 12px;
   }
 }
