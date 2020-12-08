@@ -2,7 +2,7 @@ import React, {useEffect, useCallback, useState} from 'react'
 import { getHolds } from '../../redux/holdReducer'
 import axios from "axios"
 import {useDispatch, useSelector} from "react-redux"
-import UserHold from "../UserHold/UserHold"
+import UserHold from "./UserHold"
 import {getUser} from "../../redux/authReducer"
 import { v4 as randomString } from 'uuid'
 import {useDropzone} from 'react-dropzone'

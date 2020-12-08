@@ -25,7 +25,6 @@
         
             button {
                 @include button;
-                height: 8%;
                 position: relative;
             }
 
@@ -48,7 +47,6 @@
                 }
 
                 .update-button{
-                    width: 55%;
                     bottom: 3%;
                 }
 
@@ -71,10 +69,6 @@
                         align-items: center;
                         border-radius: 15%;
                     }
-
-                    .cancel-button{
-                        width: 35%;
-                    }
                 }
             }
         }
@@ -88,13 +82,10 @@
             .user-hold {
                 @include list-item;
                 height: 35vh;
-                width: 90%;
+                width: 80%;
                 .buttons {
                     height: 10%;
-                    width: 20%;
-                    button {
-                        width: 100%;
-                    }
+                    width: 22%;
                 }
             }
         }
@@ -129,13 +120,10 @@
                         .drop-zone{
                             height: 11%;
                         }
-                        .cancel-button{
-                            width: 50%;
-                        }
                     }
 
                     .update-button{
-                        bottom: 20%;
+                        bottom: 18%;
                     }
                 }
             }
@@ -151,9 +139,6 @@
 
 @media (max-width: $media-mobile){
     .account{
-        button {
-            width: 60%;
-        }
         h1 {
             font-size: 12px;
         }
@@ -177,14 +162,10 @@
                         .drop-zone{
                             height: 15%;
                         }
-                        .cancel-button{
-                            width: 60%;
-                        }
                     }
 
                     .update-button{
                         bottom: 24%;
-                        width: 70%;
                     }
                 }
             }
@@ -192,7 +173,7 @@
             .user-holds{
                 .user-hold {
                     height: 15vh;
-                    width: 110%;
+                    width: 130%;
                 }
             }
         }

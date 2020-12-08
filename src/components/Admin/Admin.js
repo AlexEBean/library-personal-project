@@ -2,7 +2,8 @@ import React, {useEffect} from 'react'
 import { getHolds } from '../../redux/holdReducer'
 import axios from "axios"
 import {useDispatch, useSelector} from "react-redux"
-import AllHolds from "../AllHolds/AllHolds"
+import {Link} from "react-router-dom"
+import AllHolds from "./AllHolds"
 import "./admin.scss"
 
 const Admin = () => {
@@ -40,6 +41,9 @@ const Admin = () => {
                 <ul className = "all-holds"
                 style = {{listStyle: "none"}} 
                 >
+                    <Link to = "/userlist" className = "link">
+                        Switch to All Users
+                    </Link>
                     <h2>All User Holds</h2>
                     {mappedHolds}
                 </ul>

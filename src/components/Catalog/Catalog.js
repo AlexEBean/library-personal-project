@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import {connect, useSelector} from "react-redux"
 import axios from "axios"
-import Book from "../Book/Book"
+import Book from "./Book"
 import "./catalog.scss"
 
 const Catalog = () => {
@@ -103,6 +103,7 @@ const Catalog = () => {
                     user.admin
                         ? <button
                             className = "add-book-buttons"
+                            id = "add-book-button"
                             onClick = {() => {
                                 setAdd(!add)
                             }}

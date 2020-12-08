@@ -6,6 +6,7 @@ import Login from "./components/Login/Login"
 import Catalog from "./components/Catalog/Catalog"
 import Account from "./components/Account/Account"
 import Admin from "./components/Admin/Admin"
+import UserList from "./components/UserList/UserList"
 
 
 export default (
@@ -16,5 +17,6 @@ export default (
         <Route path = "/catalog" component = {Catalog}/>
         <Route path = "/account" component = {Account}/>
         <Route path = "/admin" component = {Admin}/>
+        <Route path = "/userlist" component = {UserList}/>
     </Switch>
 )

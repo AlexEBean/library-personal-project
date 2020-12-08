@@ -58,7 +58,7 @@ app.get("/api/signs3", checkUser, awsCtrl.config)
 app.put("/api/user", checkUser, awsCtrl.updateProfilePic)
 app.post("/api/email", emailCtrl.email)
 
-//# Icebox Endpoints (they're all functional on the back-end)
+//# Icebox Endpoints
 app.get("/api/user", checkUser, userCtrl.getUser)
 app.get("/api/users", checkAdmin, userCtrl.getUsers)
 app.put("/api/user/:userId", checkAdmin, userCtrl.updateUser)

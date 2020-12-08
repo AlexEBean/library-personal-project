@@ -30,7 +30,7 @@
 
   button {
       @include button;
-      width: 35%;
+      font-size: 24px;
   }
 }
 
@@ -65,14 +65,14 @@
 
   .buttons {
       height: 100%;
-      width: 25%;
+      width: 15%;
       display: flex;
       flex-direction: column;
-      justify-content: space-evenly;
+      justify-content: space-around;
 
       button {
           @include button;
-          width: 60%;
+          color: $base-color;
       }
   
       .remove-button {
@@ -87,10 +87,12 @@
   font-size: 18px;
   text-align: center;
   font-family: $secondary-font;
+  color: $tertiary-color;
   border-radius: 30%;
+  border: 1px solid transparent;
+  background-color: inherit;
   &:hover {
       font-weight: bold;
-      background-color: $button-color;
   }
 
   @media (max-width: $media-tablet){

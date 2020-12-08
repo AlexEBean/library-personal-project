@@ -1,0 +1,60 @@
+@import "../../styles/_mixins.scss", "../../styles/_variables.scss";
+
+.user-list {
+    @include base;
+    height: fit-content;
+
+    .list{
+        max-height: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        .user {
+            @include list-item;
+            justify-content: space-around;
+            height: 35vh;
+            width: 70%;
+            .info{
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+}
+
+@media (max-width: $media-tablet){
+    .user-list{
+        .list{
+            .user {
+                height: 25vh;
+                h3 {
+                    font-size: 11px;
+                }
+                .buttons {
+                    button {
+                        font-size: 9px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $media-mobile){
+    .user-list{
+        .list{
+            .user {
+                height: 15vh;
+                h3 {
+                    font-size: 8px;
+                }
+                .buttons {
+                    button {
+                        font-size: 7px;
+                    }
+                }
+            }
+        }
+    }
+}

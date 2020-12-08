@@ -13,7 +13,7 @@
             color: $tertiary-color;
             text-decoration: none;
             &:hover {
-                color: $list-color;
+                font-weight: bold;
             }
         }
     }
@@ -23,7 +23,7 @@
 
     .login {
         h1 {
-            font-size: 16px;
+            font-size: 28px;
         }
         .link {
             font-size: 16px;
@@ -36,7 +36,7 @@
 
     .login {
         h1 {
-            font-size: 12px;
+            font-size: 22px;
         }
         .link {
             font-size: 12px;

@@ -10,11 +10,19 @@
         flex-direction: column;
         align-items: center;
         width: 100%;
+        .link {
+            color: $tertiary-color;
+            text-decoration: none;
+            font-size: 32px;
+            &:hover {
+                font-weight: bold;
+            }
+        }
         .one-hold {
             @include list-item;
-            justify-content: space-between;
+            justify-content: space-around;
             height: 35vh;
-            width: 50%;
+            width: 40%;
         }
     }
 }
@@ -22,7 +30,11 @@
 @media (max-width: $media-tablet){
     .admin{
         .all-holds{
+            .link {
+                font-size: 28px;
+            }
             .one-hold {
+                height: 25vh;
                 h1 {
                     font-size: 14px;
                 }
@@ -40,7 +52,11 @@
 @media (max-width: $media-mobile){
     .admin{
         .all-holds{
+            .link {
+                font-size: 24px;
+            }
             .one-hold {
+                height: 15vh;
                 h1 {
                     font-size: 10px;
                 }

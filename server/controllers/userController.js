@@ -17,10 +17,9 @@ module.exports = {
     updateUser: async (req, res) => {
         const db = req.app.get("db")
         const {userId} = req.params
-        const [updatedUser] = await db.user.update_user_admin_status(+userId)
+        await db.user.update_user_admin_status(+userId)
         
-        req.session.user = updatedUser
-        res.status(200).send(req.session.user)
+        res.sendStatus(200)
     },
     deleteUser: async (req, res) => {
         const db = req.app.get('db')
