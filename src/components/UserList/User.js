@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 import axios from "axios"
 
 const User = (props) =>  {
     const {first_name, last_name, profile_pic, email, user_id, admin} = props.oneUser
+    const [deleting, toggleDeleting] = useState(false)
 
     const changeAdminStatus = async (user_id) => {
         await axios.put (`/api/user/${user_id}`)
@@ -55,14 +56,33 @@ const User = (props) =>  {
                             "Give Admin Status"
                         }
                 </button>
-                <button
-                        className = "remove-button"
-                        onClick = {() =>
-                            deleteUser(user_id)
-                        }
-                    >
-                        Remove User
-                </button>
+                    {deleting
+                    ?
+                        <div className = "are-you-sure-box">
+                            <p> Are you sure? </p>
+                            <button
+                            className = "remove-button"
+                            onClick={() => {
+                                deleteUser(user_id)
+                                toggleDeleting(!deleting)
+                            }}
+                            >
+                            Remove
+                            </button>
+                            <button onClick = {() =>
+                                    toggleDeleting(!deleting)
+                                }> Cancel 
+                            </button>
+                        </div>
+                    :
+                        <button
+                            className = "remove-button"
+                            onClick = {() =>
+                                toggleDeleting(!deleting)
+                            }
+                            >
+                            Remove User
+                        </button>}  
             </div>
         </div>
     )

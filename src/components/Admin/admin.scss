@@ -2,7 +2,6 @@
 
 .admin {
     @include base;
-    height: fit-content;
 
     .all-holds{
         max-height: fit-content;
@@ -21,8 +20,17 @@
         .one-hold {
             @include list-item;
             justify-content: space-around;
-            height: 35vh;
             width: 40%;
+        }
+    }
+}
+
+@media (max-width: $media-laptop){
+    .admin{
+        .all-holds{
+            .one-hold{
+                width: 70%
+            }
         }
     }
 }
@@ -35,6 +43,7 @@
             }
             .one-hold {
                 height: 25vh;
+                width: 80%;
                 h1 {
                     font-size: 14px;
                 }

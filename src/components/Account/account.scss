@@ -2,8 +2,6 @@
 
 .account {
     @include base;
-    height: fit-content;
-    
 
     input {
         width: 50%;
@@ -68,6 +66,7 @@
                         justify-content: center;
                         align-items: center;
                         border-radius: 15%;
+                        
                     }
                 }
             }
@@ -81,11 +80,43 @@
             align-items: center;
             .user-hold {
                 @include list-item;
-                height: 35vh;
-                width: 80%;
+                width: 70%;
                 .buttons {
-                    height: 10%;
+                    height: 100%;
                     width: 22%;
+                    .are-you-sure-box{
+                        @include are-you-sure-box;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $media-laptop){
+    .account{
+        .account-info{
+            .profile-info {
+                .pic-box{
+                    .profile-picture{
+                        height: 25%;
+                    }
+                    .update-box{
+                        top: 3%;
+                        .drop-zone{
+                            height: 13%;
+                        }
+                    }
+
+                    .update-button{
+                        bottom: 15%;
+                    }
+                }
+            }
+            .user-holds{
+                .user-hold {
+                    height: 30vh;
+                    width: 100%;
                 }
             }
         }
@@ -111,19 +142,19 @@
             .profile-info {
                 .pic-box{
                     .profile-picture{
-                        height: 20%;
+                        height: 15%;
                     }
 
                     .update-box{
                         top: 0%;
-                        margin-bottom: 30%;
+                        margin-bottom: 90%;
                         .drop-zone{
-                            height: 11%;
+                            height: 13%;
                         }
                     }
 
                     .update-button{
-                        bottom: 18%;
+                        bottom: 25%;
                     }
                 }
             }
@@ -131,6 +162,11 @@
             .user-holds{
                 .user-hold {
                     height: 20vh;
+                    .buttons{
+                        button{
+                            font-size: 12px;
+                        }
+                    }
                 }
             }
         }
@@ -153,27 +189,32 @@
             .profile-info {
                 .pic-box{
                     .profile-picture{
-                        height: 15%;
+                        height: 10%;
                         width: 80%;
                     }
                     .update-box{
                         position: absolute;
-                        top: 20%;
+                        top: 16%;
                         .drop-zone{
                             height: 15%;
                         }
                     }
 
                     .update-button{
-                        bottom: 24%;
+                        bottom: 29%;
                     }
                 }
             }
 
             .user-holds{
                 .user-hold {
-                    height: 15vh;
-                    width: 130%;
+                    height: 12vh;
+                    width: 90%;
+                    .buttons{
+                        button{
+                            font-size: 8px;
+                        }
+                    }
                 }
             }
         }

@@ -12,10 +12,9 @@ import "./account.scss"
 const Account = () => {
     const {user} = useSelector((state) => state.reducer)
     const {holds} = useSelector((state) => state.holdReducer)
-    const {user_id} = user
-    let {profile_pic} = user
+    const {user_id, profile_pic} = user
     const [update, setUpdate] = useState(false)
-    const [picUrl, setUrl] = useState("")
+    const [picUrl, setUrl] = useState(`${profile_pic}`)
     const [isUploading, setUploading] = useState(false)
 
     const dispatch = useDispatch()
@@ -57,11 +56,15 @@ const Account = () => {
                 'Content-Type': file.type
             }
         }
+            
+        deleteProfilePic()
+
+
         axios.put(signedRequest, file, options).then(() => {
             setUrl(url)
             axios.put("/api/user", {user_id, url}).then((res) => {
-                console.log(res.data)
                 dispatch(getUser(res.data))
+                console.log(user)
                 setUpdate(false)
             })
             setUploading(false)
@@ -73,7 +76,14 @@ const Account = () => {
                 alert(`Error: ${err.status}\n ${err.stack}`)
             }
         })
-        
+    }
+
+    const deleteProfilePic = () => {
+        try {
+            axios.post("/api/signs3", {picUrl: picUrl})
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     const {getRootProps, getInputProps} = useDropzone({
@@ -115,7 +125,7 @@ const Account = () => {
                                     <input {...getInputProps()} />
                                     {isUploading 
                                     ? 
-                                        <GridLoader /> 
+                                        <GridLoader/> 
                                     : 
                                         <h3>Drop File or Click Here</h3>}
                                 </div>

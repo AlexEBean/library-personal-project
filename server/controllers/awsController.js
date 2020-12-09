@@ -35,6 +35,34 @@ module.exports = {
             return res.send(returnData)
         })
     },
+    deleteProfilePic: (req, res) => {
+       
+        aws.config = {
+          region: "us-west-2",
+          accessKeyId: AWS_ACCESS_KEY_ID,
+          secretAccessKey: AWS_SECRET_ACCESS_KEY,
+        };
+  
+        const {picUrl} = req.body
+
+        const fileName = picUrl.replace(
+            `https://${S3_BUCKET}.s3.amazonaws.com/`, ""
+          )
+
+        const s3 = new aws.S3();
+        const params = {
+          Bucket: S3_BUCKET,
+          Key: fileName
+        }
+        s3.deleteObject(params, (err, data) => {
+          if (err){
+            console.log(err, err.stack)
+          } 
+          else{
+            console.log("Sucess deleting from bucket")
+          }
+        })
+    },
 
     updateProfilePic: async (req, res) => {
         const db = req.app.get("db")

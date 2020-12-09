@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 import axios from 'axios'
 import {useHistory} from "react-router-dom"
 
 const Book = (props) =>  {
+    const [deleting, toggleDeleting] = useState(false)
     const {title, cover, author, year, book_id} = props.book
     const {user_id, admin, email} = props.user
     const history = useHistory()
@@ -62,14 +63,35 @@ const Book = (props) =>  {
                 }
                 {admin
                 ? 
-                    <button
-                        className = "remove-button"
-                        onClick = {() =>
-                            deleteBook(book_id)
-                        }
-                    >
-                        Remove Book
-                    </button>
+                    deleting
+                    ?
+                        <div className = "are-you-sure-box">
+                            <p> Are you sure? </p>
+                            <button
+                            className = "remove-button"
+                            onClick={() => {
+                                deleteBook(book_id)
+                                toggleDeleting(!deleting)
+                            }}
+                            >
+                                Remove
+                            </button>
+                            <button onClick = {() =>
+                                    toggleDeleting(!deleting)
+                                }
+                            > 
+                                Cancel 
+                            </button>
+                        </div>
+                    :
+                        <button
+                            className = "remove-button"
+                            onClick = {() =>
+                                toggleDeleting(!deleting)
+                            }
+                            >
+                            Remove Book
+                        </button>   
                 :
                     null
                 }

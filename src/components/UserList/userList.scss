@@ -2,7 +2,6 @@
 
 .user-list {
     @include base;
-    height: fit-content;
 
     .list{
         max-height: fit-content;
@@ -13,21 +12,40 @@
         .user {
             @include list-item;
             justify-content: space-around;
-            height: 35vh;
-            width: 70%;
+            width: 60%;
             .info{
                 display: flex;
                 flex-direction: column;
+            }
+            .buttons {
+                .are-you-sure-box{
+                    @include are-you-sure-box
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $media-laptop){
+    .user-list{
+        .list{
+            .user{
+                height: 30vh;
+                width: 70%
             }
         }
     }
 }
 
 @media (max-width: $media-tablet){
+    p{
+        font-size: 11px;
+    }
     .user-list{
         .list{
             .user {
-                height: 25vh;
+                height: 20vh;
+                width: 80%;
                 h3 {
                     font-size: 11px;
                 }
@@ -42,10 +60,13 @@
 }
 
 @media (max-width: $media-mobile){
+    p{
+        font-size: 8px;
+    }
     .user-list{
         .list{
             .user {
-                height: 15vh;
+                height: 12vh;
                 h3 {
                     font-size: 8px;
                 }

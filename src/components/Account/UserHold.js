@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {useState} from 'react'
 import axios from 'axios'
 
 const UserHold = (props) =>  {
+    const [deleting, toggleDeleting] = useState(false)
     const {title, cover, year, author, hold_id} = props.hold
     const {email} = props.user
 
@@ -39,14 +40,33 @@ const UserHold = (props) =>  {
                 <h3>{year}</h3>
             </div>
             <div className = "buttons">
-                <button
-                        className = "remove-button"
-                        onClick = {() =>
-                            deleteHold(hold_id)
-                        }
-                    >
-                        Remove Hold
-                </button>
+            {deleting
+                    ?
+                        <div className = "are-you-sure-box">
+                            <p> Are you sure? </p>
+                            <button
+                            className = "remove-button"
+                            onClick={() => {
+                                deleteHold(hold_id)
+                                toggleDeleting(!deleting)
+                            }}
+                            >
+                            Remove
+                            </button>
+                            <button onClick = {() =>
+                                    toggleDeleting(!deleting)
+                                }> Cancel 
+                            </button>
+                        </div>
+                    :
+                        <button
+                            className = "remove-button"
+                            onClick = {() =>
+                                toggleDeleting(!deleting)
+                            }
+                            >
+                            Remove Hold
+                        </button>}  
             </div>
         </div>
     )

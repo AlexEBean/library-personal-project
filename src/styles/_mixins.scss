@@ -1,5 +1,5 @@
 @mixin base {
-    height: 92vh;
+    min-height: 92vh;
     max-height: fit-content;
     width: 100vw;
     display: flex;
@@ -12,7 +12,7 @@
 
 @mixin form {
   background: black;
-  height: 80%;
+  height: 80vh;
   width: 40%;
   border-radius: 10%;
   display: flex;
@@ -35,6 +35,7 @@
 }
 
 @mixin list-item {
+  height: 35vh;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -65,7 +66,7 @@
 
   .buttons {
       height: 100%;
-      width: 15%;
+      width: 23%;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
@@ -94,8 +95,15 @@
   &:hover {
       font-weight: bold;
   }
+}
 
-  @media (max-width: $media-tablet){
-    font-size: 12px;
+@mixin are-you-sure-box{
+  height: 70%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  p{
+      font-family: $secondary-font;
   }
 }
