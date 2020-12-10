@@ -17,8 +17,8 @@ const Register = () => {
         const subject = "Welcome!"
         const text = `Hello ${firstName} ${lastName}, welcome to the library!`
 
-        await axios.post("/api/email", {email, subject, text})
         try {
+            await axios.post("/api/email", {email, subject, text})
             console.log("Email sent")
         } catch (err) {
             console.log(err)

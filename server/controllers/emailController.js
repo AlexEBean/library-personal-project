@@ -10,8 +10,8 @@ module.exports = {
         let transporter = nodemailer.createTransport({
             service: "gmail",
             auth: {
-                user: `${USER}`,
-                pass: `${PASS}`
+                user: USER,
+                pass: PASS
             }
         })
 

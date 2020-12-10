@@ -21,8 +21,8 @@ const Book = (props) =>  {
         const subject = "New Hold Placed"
         const text = `Hello, you've recently placed a hold on ${title}.  We will let you know when it's available.`
 
-        await axios.post("/api/email", {email, subject, text})
         try {
+            await axios.post("/api/email", {email, subject, text})
             console.log("Email sent")
         } catch (err) {
             console.log(err)
