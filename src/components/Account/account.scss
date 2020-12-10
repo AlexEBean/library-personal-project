@@ -161,7 +161,7 @@
 
             .user-holds{
                 .user-hold {
-                    height: 20vh;
+                    height: 22vh;
                     .buttons{
                         button{
                             font-size: 12px;
@@ -198,17 +198,21 @@
                         .drop-zone{
                             height: 15%;
                         }
+                        .cancel-button{
+                            font-size: 8px;
+                        }
                     }
 
                     .update-button{
                         bottom: 29%;
+                        font-size: 8px;
                     }
                 }
             }
 
             .user-holds{
                 .user-hold {
-                    height: 12vh;
+                    height: 17vh;
                     width: 90%;
                     .buttons{
                         button{

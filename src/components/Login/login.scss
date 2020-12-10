@@ -22,6 +22,9 @@
 @media (max-width: $media-tablet){
 
     .login {
+        form{
+            width: 60%;
+        }
         h1 {
             font-size: 28px;
         }
