@@ -64,7 +64,6 @@ const Account = () => {
             setUrl(url)
             axios.put("/api/user", {user_id, url}).then((res) => {
                 dispatch(getUser(res.data))
-                console.log(user)
                 setUpdate(false)
             })
             setUploading(false)
