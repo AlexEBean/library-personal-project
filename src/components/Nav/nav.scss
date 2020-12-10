@@ -3,7 +3,7 @@
 .nav {
     width: 100vw;
     height: 8vh;
-    background-color: rgb(32,64,105);
+    background-color: $nav-color;
     font-family: $primary-font;
     display: flex;
     justify-content: space-around;

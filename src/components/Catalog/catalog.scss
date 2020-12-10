@@ -21,7 +21,7 @@
         }
 
         form {
-            width: 50%;
+            width: 40%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -59,7 +59,13 @@
 }
 
 @media (max-width: $media-laptop){
+
     .catalog{
+        .add-book-box{
+            form{
+                width: 80%;
+            }
+        }
         .book-list{
             .book{
                 width: 80%
@@ -73,13 +79,15 @@
         font-size: 11px;
     }
     .catalog{
-        .add-book-buttons {
-            font-size: 9px;
+        .add-book-box{
+            .add-book-buttons {
+                font-size: 9px;
+            }
         }
+
         .book-list{
             .book {
                 height: 25vh;
-                width: 80%;
                 h1 {
                     font-size: 16px;
                 }
@@ -108,10 +116,14 @@
             .add-book-buttons{
                 font-size: 7px
             }
+            form{
+                width: 75%;
+                }
         }
         .book-list{
             .book {
-                height: 15vh;
+                height: 13vh;
+                width: 75%;
                 h1 {
                     font-size: 12px;
                 }
