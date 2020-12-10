@@ -47,9 +47,6 @@
             @include list-item;
             width: 40%;
             .buttons {
-                button {
-                    margin: 16px;
-                }
                 .are-you-sure-box{
                     @include are-you-sure-box
                 }
