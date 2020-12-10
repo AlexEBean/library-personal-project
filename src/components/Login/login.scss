@@ -38,6 +38,9 @@
 @media (max-width: $media-mobile){
 
     .login {
+        form{
+            width: 70%;
+        }
         h1 {
             font-size: 22px;
         }
