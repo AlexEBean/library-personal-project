@@ -20,8 +20,8 @@ const path = require('path')
 
 // const __dirname = path.resolve(path.dirname(''));
 
-app.use(express.static(`${__dirname}/../build`))
 app.use(express.json())
+app.use(express.static(`${__dirname}/../build`))
 
 app.use(session({
     resave: false,
