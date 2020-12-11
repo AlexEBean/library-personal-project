@@ -11,6 +11,7 @@
 
         .link {
             color: $tertiary-color;
+            font-family: $secondary-font;
             text-decoration: none;
             &:hover {
                 font-weight: bold;
