@@ -33,8 +33,8 @@ const Book = (props) =>  {
     const addHold = async (bookId) => {
         try {
             await axios.post (`/api/hold/${bookId}`)
-            history.push("/account")
             newHoldEmail()
+            history.push("/account")
         } catch (err) {
             console.log(err)
         }

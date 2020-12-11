@@ -31,6 +31,7 @@ const Register = () => {
         try {
             const res = await axios.post("/auth/register", {firstName, lastName, email, password})
             dispatch(loginUser(res.data))
+            welcomeEmail()
             history.push("/account")
         }
         catch(err) {
@@ -72,12 +73,7 @@ const Register = () => {
                     placeholder = "Enter Password" 
                     onChange = {e => setPassword(e.target.value)}
                 />
-                <button onClick = {(e) => {
-                    register(e)
-                    welcomeEmail()
-                }} > 
-                    Register 
-                </button>
+                <button onClick = {register} > Register </button>
                 <button onClick = {backToLogin} > Back to login </button>
             </form>
         </div>
