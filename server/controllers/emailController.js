@@ -7,7 +7,7 @@ module.exports = {
 
         const {email, subject, text} = req.body
 
-        let transporter = nodemailer.createTransport({
+        const transporter = nodemailer.createTransport({
             service: "gmail",
             auth: {
                 user: USER,
@@ -15,7 +15,7 @@ module.exports = {
             }
         })
 
-        let message = {
+        const message = {
             from: `${USER}`,
             to: email,
             subject: subject,
