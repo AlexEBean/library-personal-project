@@ -18,8 +18,6 @@ const app = express()
 
 const path = require('path')
 
-const __dirname = path.resolve(path.dirname(''));
-
 app.use(express.json())
 app.use(express.static(`${__dirname}/../build`))
 
