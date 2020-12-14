@@ -13,8 +13,7 @@ const Register = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-    const welcomeEmail = async (e) => {
-        e.preventDefault()
+    const welcomeEmail = async () => {
         const subject = "Welcome!"
         const text = `Hello ${firstName} ${lastName}, welcome to the library!`
 
