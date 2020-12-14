@@ -32,7 +32,7 @@ const Register = () => {
         try {
             const res = await axios.post("/auth/register", {firstName, lastName, email, password})
             dispatch(loginUser(res.data))
-            welcomeEmail()
+            welcomeEmail(e)
             history.push("/account")
         }
         catch(err) {
