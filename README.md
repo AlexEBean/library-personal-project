@@ -1,8 +1,5 @@
 # Personal Project
 
-## Live website
-http://libraris.xyz
-
 ## MVP
 - Users can create an account
 - Users can login to website
