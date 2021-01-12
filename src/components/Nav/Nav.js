@@ -1,7 +1,7 @@
-import React from 'react'
+import React, {useEffect, useCallback} from 'react'
 import {Link, useHistory} from "react-router-dom"
 import {connect, useDispatch, useSelector} from "react-redux"
-import {logoutUser} from "../../redux/authReducer"
+import {logoutUser, getUser} from "../../redux/authReducer"
 import axios from "axios"
 import "./nav.scss"
 
@@ -21,6 +21,21 @@ const Nav = () => {
             console.log(err)
         }
     }
+
+    const refresh = useCallback(async () => {
+        try{
+            const res = await axios.get('/auth/refresh')
+            if (res.data.user_id){
+                dispatch(getUser(res.data))
+            }
+        }catch(err){
+            alert(err)
+        }
+    }, [dispatch])
+
+    useEffect(() =>{
+        refresh() 
+    }, [refresh])
 
     return (
         <div className = "nav">

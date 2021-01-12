@@ -38,4 +38,20 @@ module.exports = {
         req.session.destroy()
         res.sendStatus(200)
     },
+
+    refresh: async (req, res) => {
+        if (req.session.user){
+           try{
+                const {user_id} = req.session.user    
+                const db = req.app.get('db')
+                const [user] = await db.auth.refresh_user(+user_id)
+                res.status(200).send(user)
+           }  catch(err) {
+                console.log("Error in refreshing", err)
+                res.sendStatus(500)
+            }
+        }  else {
+            res.sendStatus(200)
+        }
+    },
 }

@@ -44,6 +44,7 @@ massive({
 app.post("/auth/register", authCtrl.register)
 app.post("/auth/login", authCtrl.login)
 app.post("/auth/logout", authCtrl.logout)
+app.get('/auth/refresh', authCtrl.refresh)
 
 // # Books
 app.get("/api/books", bookCtrl.getBooks)
