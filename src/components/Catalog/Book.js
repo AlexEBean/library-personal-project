@@ -37,6 +37,7 @@ const Book = (props) =>  {
             history.push("/account")
         } catch (err) {
             console.log(err)
+            alert("You already have a hold on that book.")
         }
     }
 
