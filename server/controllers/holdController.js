@@ -22,9 +22,9 @@ module.exports = {
         const db = req.app.get('db')
         const {user_id} = req.session.user
         const {bookId} = req.params
-  
+        const checkHold = (db.hold.check_hold([+user_id, +bookId]))[0].case
+        
         try {
-            const checkHold = (await db.hold.check_hold([+user_id, +bookId]))[0].case
             if (checkHold === "FALSE"){
                 await db.hold.add_hold([+user_id, +bookId])
                 res.sendStatus(200)
