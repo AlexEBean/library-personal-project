@@ -25,11 +25,12 @@ module.exports = {
   
         try {
             const checkHold = (await db.hold.check_hold([+user_id, +bookId]))[0].case
-            console.log(checkHold)
-            if (!checkHold){
+            if (checkHold === "FALSE"){
                 await db.hold.add_hold([+user_id, +bookId])
                 res.sendStatus(200)
-            } 
+            } else {
+                res.status(409).send("You already have a hold on that book")
+            }
         } catch(err) {
             console.log("Error in adding hold", err)
             res.sendStatus(404)
