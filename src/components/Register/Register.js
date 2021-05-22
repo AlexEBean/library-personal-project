@@ -22,7 +22,6 @@ const Register = () => {
             console.log("Email sent")
         } catch (err) {
             console.log(err)
-            alert("Unable to send email")
         }
     }
 
