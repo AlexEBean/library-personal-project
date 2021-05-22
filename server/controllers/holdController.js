@@ -24,7 +24,7 @@ module.exports = {
         const {bookId} = req.params
   
         try {
-            const checkHold = ((await db.hold.check_hold([+user_id, +bookId]))[0].case) == "TRUE"
+            const checkHold = (await db.hold.check_hold([+user_id, +bookId]))[0].case
             if (!checkHold){
                 await db.hold.add_hold([+user_id, +bookId])
                 res.sendStatus(200)
