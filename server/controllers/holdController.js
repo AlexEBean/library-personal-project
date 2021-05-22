@@ -22,21 +22,15 @@ module.exports = {
         const db = req.app.get('db')
         const {user_id} = req.session.user
         const {bookId} = req.params
-        const checkHold = async() => {
-            const check = (await db.hold.check_hold([+user_id, +bookId]))
-            if (check === "FALSE") {
-                return false
-            } else {
-                return true
-            }
-        }
-        const check = await checkHold()
+  
         try {
-            // if (check === false){
-            //     await db.hold.add_hold([+user_id, +bookId])
-            //     res.sendStatus(200)
-            // } 
-            console.log(check)
+            const checkHold = (await db.hold.check_hold([+user_id, +bookId]))[0].case
+            if (checkHold === "FALSE"){
+                await db.hold.add_hold([+user_id, +bookId])
+                res.sendStatus(200)
+            } else {
+                return res.status(409).send("You already have a hold on that book")
+            }
         } catch(err) {
             console.log("Error in adding hold", err)
             res.sendStatus(404)
