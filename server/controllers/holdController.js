@@ -25,6 +25,7 @@ module.exports = {
   
         try {
             const checkHold = (await db.hold.check_hold([+user_id, +bookId]))[0].case
+            console.log(checkHold)
             if (!checkHold){
                 await db.hold.add_hold([+user_id, +bookId])
                 res.sendStatus(200)
