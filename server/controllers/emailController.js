@@ -1,4 +1,4 @@
-const nodemailer = require("nodemailer")
+const nodeOutlook = require('nodejs-nodemailer-outlook')
 
 module.exports = {
 
@@ -6,30 +6,23 @@ module.exports = {
 
         const {email, subject, text} = req.body
 
-        const transporter = nodemailer.createTransport({
-            service: "gmail",
+        nodeOutlook.sendEmail({
             auth: {
-                user: "writersblockdawgs@gmail.com",
-                pass: "Writersblock$"
-            }
-        })
-
-        const message = {
-            from: "writersblockdawgs@gmail.com",
+                user: "writers-block-heroes@outlook.com",
+                pass: "WBPassword9!"
+            },
+            from: 'writers-block-heroes@outlook.com',
             to: email,
             subject: subject,
+            html: `<p>${text}</p>`,
             text: text,
-            html: `<p>${text}</p>`
-        }
+            replyTo: email,
 
-        await transporter.sendMail(message, (err, res) => {
-            if (err) {
-                console.log(err);
-              } else {
-                console.log("Email sent: " + res.response)
-                res.sendStatus(200)
-              }
-        })
+            onError: (e) => console.log(e),
+            onSuccess: (i) => console.log(i)
+        }
         
+        
+        )
     }
 }
