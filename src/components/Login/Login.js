@@ -15,9 +15,13 @@ const Login = () => {
     const login = async (e) => {
         e.preventDefault()
         try {
+            if (!email || !password) {
+                alert("Please fill out all fields.")
+            } else {
             const res = await axios.post("/auth/login", {email, password})
             dispatch(loginUser(res.data))
             history.push("/account")
+            }
         }
         catch(err) {
             console.log(err)

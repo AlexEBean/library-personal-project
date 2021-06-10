@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import axios from "axios"
 import {loginUser} from "../../redux/authReducer"
 import {connect, useDispatch} from "react-redux"
@@ -12,6 +12,24 @@ const Register = () => {
     const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [passCheck, setPassCheck] = useState("")
+    const [filledOut, setFilledOut] = useState(false)
+    const [passMatch, setPassMatch] = useState(false)
+
+
+    useEffect(() => {
+        if (password === passCheck) {
+            setPassMatch(true)
+        } else {
+            setPassMatch(false)
+        }
+        if (firstName && lastName && email && password && passCheck) {
+            setFilledOut(true)
+        } else {
+            setFilledOut(false)
+        }
+
+    }, [firstName, lastName, email, password, passCheck, passMatch])
 
     const welcomeEmail = async () => {
         const subject = "Welcome!"
@@ -28,10 +46,16 @@ const Register = () => {
     const register = async (e) => {
         e.preventDefault()
         try {
-            const res = await axios.post("/auth/register", {firstName, lastName, email, password})
-            dispatch(loginUser(res.data))
-            welcomeEmail(e)
-            history.push("/account")
+            if (!filledOut){
+                alert("Please fill out all fields.")
+            } else if (!passMatch){
+                alert("Your passwords do not match.")
+            } else {
+                const res = await axios.post("/auth/register", {firstName, lastName, email, password})
+                dispatch(loginUser(res.data))
+                welcomeEmail(e)
+                history.push("/account")
+            }
         }
         catch(err) {
             console.log(err)
@@ -43,35 +67,25 @@ const Register = () => {
         history.push("/login")
     }
 
+    const inputsArr = [
+        {name: "First Name", type: "text", setState: setFirstName},
+        {name: "Last Name", type: "text", setState: setLastName},
+        {name: "Email", type: "email", setState: setEmail},
+        {name: "Password", type: "password", setState: setPassword},
+        {name: "Confirm password", type: "password", setState: setPassCheck}
+    ]
+
     return (
         <div className = "register">
             <form>
                 <h3>To register, please fill the blanks below:</h3>
-                <input 
-                    name = "first name"
-                    value = {firstName}
-                    placeholder = "First Name"
-                    onChange = {e => setFirstName(e.target.value)}
-                />
-                <input
-                    name = "last name"
-                    value = {lastName}
-                    placeholder = "Last Name"
-                    onChange = {e => setLastName(e.target.value)}                
-                />
-                <input
-                    name = "email"
-                    value = {email}
-                    placeholder = "Email"
-                    onChange = {e => setEmail(e.target.value)}                
-                />
-                <input
-                    name = "password" 
-                    type = "password"
-                    value = {password} 
-                    placeholder = "Enter Password" 
-                    onChange = {e => setPassword(e.target.value)}
-                />
+                    {inputsArr.map(input => (
+                            <input className = "input" placeholder = {input.name} type = {input.type} onChange={e => input.setState(e.target.value)} />
+                            
+                    ))}
+                <h4 className = "passwords-do-not-match" style = {{visibility: passMatch ? "hidden" : "visible"}}>
+                    Passwords do not match.
+                </h4>
                 <button onClick = {register} > Register </button>
                 <button onClick = {backToLogin} > Back to login </button>
             </form>

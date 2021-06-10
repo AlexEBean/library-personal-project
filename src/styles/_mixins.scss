@@ -12,7 +12,7 @@
 
 @mixin form {
   background: $nav-color;
-  height: 80vh;
+  height: 75vh;
   width: 40%;
   border-radius: 10%;
   display: flex;
@@ -20,7 +20,7 @@
   justify-content: space-around;
   align-items: center;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 50px;
 
   input {
     font-family: $primary-font;
