@@ -83,9 +83,9 @@ const Register = () => {
                             <input className = "input" placeholder = {input.name} type = {input.type} onChange={e => input.setState(e.target.value)} />
                             
                     ))}
-                <h4 className = "passwords-do-not-match" style = {{visibility: passMatch ? "hidden" : "visible"}}>
+                {/* <h4 className = "passwords-do-not-match" style = {{visibility: passMatch ? "hidden" : "visible"}}>
                     Passwords do not match.
-                </h4>
+                </h4> */}
                 <button onClick = {register} > Register </button>
                 <button onClick = {backToLogin} > Back to login </button>
             </form>
