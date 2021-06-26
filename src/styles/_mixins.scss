@@ -6,7 +6,8 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background-color: $base-color;
+    background: url("../media/library.jpg") center no-repeat;
+    background-size: cover;
     color: $tertiary-color;
   }
 
