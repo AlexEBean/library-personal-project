@@ -11,7 +11,7 @@ const Book = (props) =>  {
     const deleteBook = async (bookId) => {
         try {
             await axios.delete (`/api/book/${bookId}`)
-            props.getBooks()
+            props.getAllBooks()
         } catch (err) {
             console.log(err)
         }

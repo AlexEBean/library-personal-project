@@ -11,19 +11,34 @@ const Catalog = () => {
     const [cover, setCover] = useState("")
     const [author, setAuthor] = useState("")
     const [year, setYear] = useState("")
+    const [search, setSearch] = useState("")
     const {user} = useSelector((state) => state.reducer)
 
     useEffect(() => {
-        getBooks()
+        getAllBooks()
       }, [])
 
-    const getBooks = async () => {
+    const getAllBooks = async () => {
         try {
           const res = await axios.get("/api/books")
           setBooks(res.data)
         } catch (err) {
           console.log(err)
         }
+    }
+
+    const getBooksBySearch = async () => {
+        try {
+          const res = await axios.get(`/api/books?search=${search}`)
+          setBooks(res.data)
+        } catch (err) {
+          console.log(err)
+        }
+    }
+
+    const reset = () => {
+        setSearch("")
+        getAllBooks()
     }
 
     const addBook = async (e) => {
@@ -34,7 +49,7 @@ const Catalog = () => {
             setCover("")
             setAuthor("")
             setYear("")
-            getBooks()
+            getAllBooks()
         } catch (err) {
             console.log(err)
         }
@@ -46,7 +61,7 @@ const Catalog = () => {
                 key = {`${book.book_id}-${index}`} 
                 book = {book}
                 user = {user}
-                getBooks = {getBooks}
+                getAllBooks = {getAllBooks}
             />
         )
     })
@@ -113,7 +128,28 @@ const Catalog = () => {
                         : null
                 }
             </div>
-
+            <div
+                className = "search-box"
+            >
+                <input 
+                    name = "search"
+                    value = {search}
+                    placeholder = "Search..."
+                    onChange = { e => setSearch(e.target.value)}
+                />
+                <button 
+                    onClick = {getBooksBySearch} 
+                    className = "search-btn"
+                    >
+                    Search
+                    </button>
+                <button 
+                    onClick = {reset} 
+                    className = "search-btn"
+                    >
+                    Reset Search
+                </button>
+            </div>
             <ul
                 className = "book-list"
                 style = {{listStyle: "none"}} 
