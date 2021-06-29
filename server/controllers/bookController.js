@@ -1,8 +1,13 @@
 module.exports = {
     getBooks: async (req, res) => {
         const db = req.app.get('db')
-        const allBooks = await db.book.get_books()
-        res.status(200).send(allBooks)
+        const {search} = req.query
+        
+        let books = await db.book.get_books()
+        if (search) {
+            books = await db.book.search_books(search)
+          }
+        res.status(200).send(books)
     },
 
     addBook: async (req, res) => {
