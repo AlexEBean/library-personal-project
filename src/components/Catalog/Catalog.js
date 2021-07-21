@@ -16,6 +16,7 @@ const Catalog = () => {
 
     useEffect(() => {
         getAllBooks()
+        updateViews()
       }, [])
 
     const getAllBooks = async () => {
@@ -52,6 +53,16 @@ const Catalog = () => {
             getAllBooks()
         } catch (err) {
             console.log(err)
+        }
+    }
+
+    const updateViews = async () => {
+        try{
+            const page = "Catalog"
+            await axios.post("/auth/view", {page})
+        } catch(err) {
+            console.log(err)
+            alert("Error in updating view count")
         }
     }
 

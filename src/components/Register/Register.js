@@ -28,6 +28,7 @@ const Register = () => {
         } else {
             setFilledOut(false)
         }
+        
 
     }, [firstName, lastName, email, password, passCheck, passMatch])
 
@@ -65,6 +66,20 @@ const Register = () => {
 
     const backToLogin = async (e) => {
         history.push("/login")
+    }
+
+    useEffect(() => {
+        updateViews()
+      }, [])
+
+    const updateViews = async () => {
+        try{
+            const page = "Register"
+            await axios.post("/auth/view", {page})
+        } catch(err) {
+            console.log(err)
+            alert("Error in updating view count")
+        }
     }
 
     const inputsArr = [

@@ -21,3 +21,21 @@ CREATE TABLE holds(
     user_id INT REFERENCES users(user_id),
     book_id INT REFERENCES books(book_id)
 );
+
+CREATE TABLE views(
+    view_count INT,
+    page VARCHAR(100)
+);
+
+INSERT INTO views (view_count, page)
+    VALUES (0, 'Home')
+    RETURNING *;
+INSERT INTO views (view_count, page)
+    VALUES (0, 'Register')
+    RETURNING *;
+INSERT INTO views (view_count, page)
+    VALUES (0, 'Login')
+    RETURNING *;
+INSERT INTO views (view_count, page)
+    VALUES (0, 'Catalog')
+    RETURNING *;
