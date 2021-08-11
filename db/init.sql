@@ -18,8 +18,8 @@ CREATE TABLE books (
 
 CREATE TABLE holds(
     hold_id SERIAL PRIMARY KEY,
-    user_id INT REFERENCES users(user_id),
-    book_id INT REFERENCES books(book_id)
+    user_id INT REFERENCES users(user_id) ON DELETE CASCADE,
+    book_id INT REFERENCES books(book_id) ON DELETE CASCADE
 );
 
 CREATE TABLE views(
