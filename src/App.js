@@ -1,7 +1,7 @@
 import React from "react"
 import Nav from "./components/Nav/Nav"
 import routes from './routes.js';
-import libraryHome from "./media"
+import libraryHome from "./media/libraryHome.png"
 
 function App() {
   return (
